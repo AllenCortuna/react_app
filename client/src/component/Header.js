@@ -19,7 +19,7 @@ const Header = () => {
         <br/>
       <Nav className="me-auto">
           <Link to='/'>Home</Link>
-          <Link to='/find'>Find</Link>
+          <Link to='/location'>Hotels & Dorm</Link>
           <Link to='/contact'>Contact</Link>
           <Link to='/about'>About</Link>
       </Nav>

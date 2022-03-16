@@ -48,7 +48,7 @@ const Location = () => {
 return <div className="container">
 
         {/*LOOP THE HOTEL AND RESORT*/}
-:        {hotel.map((a)=> (
+        {hotel.map((a)=> (
  <Card style={{ width: '20rem',margin: '1%' }} border='dark' bg='grey'>
     <Card.Img variant="top" src={img} />
 

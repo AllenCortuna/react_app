@@ -7,7 +7,7 @@ const router = express.Router();
 
 export const getRoom = async (req, res) => { 
     try {
-        const roomPost= await RoomPost.find();
+        const roomPost= await RoomPost.find()
                 
         res.status(200).json(roomPost);
     } catch (error) {

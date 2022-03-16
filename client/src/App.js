@@ -8,25 +8,27 @@ import About from './component/About';
 import NotFound from './component/NotFound';
 import Location from './component/Location'
 import Rooms from './component/Rooms';
-import Room from './component/Room';
 const App  = () => {
  
     return <Router>
         <div>
             <Header />
-       <Routes>
+    <Routes>
 
             <Route path='/'
-    element={<Location/>} />
+            element={<Rooms/>} />
            
+            <Route path='/location'
+            element={<Location/>} />
+
             <Route path='/about'
-    element={<About />} />
+             element={<About />} />
 
             <Route path='/*'
-    element={<NotFound />} />
+            element={<NotFound />} />
 
-            </Routes>
-
+    
+    </Routes>
              <Footer />
   </div>
     </Router>
