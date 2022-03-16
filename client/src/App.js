@@ -1,10 +1,37 @@
 
-import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import './index.css';
-//import Header  from './component/Header';
-//import Footer  from './component/Footer';
+import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
+import Header  from './component/Header';
+import Footer  from './component/Footer';
 
+import About from './component/About';
+import NotFound from './component/NotFound';
+import Location from './component/Location'
+import Rooms from './component/Rooms';
+import Room from './component/Room';
 const App  = () => {
-    return <div>
-       <h1>Hello world</h1> 
-        </di>
+ 
+    return <Router>
+        <div>
+            <Header />
+       <Routes>
+
+            <Route path='/'
+    element={<Location/>} />
+           
+            <Route path='/about'
+    element={<About />} />
+
+            <Route path='/*'
+    element={<NotFound />} />
+
+            </Routes>
+
+             <Footer />
+  </div>
+    </Router>
+};
+
+export  default App;
+
+
