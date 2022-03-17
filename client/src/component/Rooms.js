@@ -1,11 +1,24 @@
 import Room from './Room'
-import Create from './Create'
+import CreateRoom from './CreateRoom'
+import { useSelector } from 'react-redux';
+const Rooms = ({setCurrentId}) => {
 
-const Rooms = () => {
+const rooms = useSelector((state) => state.rooms);
+console.log(rooms)
+
     return <div className="container">        
+        { !rooms.length ? <p>Loading ...</p> : 
+        <table>
+            {rooms.map((room)=>(
+                <div key ={room.id}>
+                    <Room room={room}
+                    setCurrentId={setCurrentId}/>
+            
+                </div >
+            ))}
+        </table>}
 
-
-        <Create/>
+        <CreateRoom/>
         </div>
 }
 
