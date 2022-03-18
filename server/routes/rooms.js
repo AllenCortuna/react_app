@@ -1,14 +1,14 @@
 import express from 'express';
 
-import { getRooms,getRoom,createRoom} from '../controlers/rooms.js';
+import { getRooms,getRoom,createRoom,updateRoom,deleteRoom} from '../controlers/rooms.js';
 
 const router = express.Router();
 
 router.get('/', getRooms);
 router.post('/', createRoom);
 router.get('/:id', getRoom);
-//router.patch('/:id', updatePost);
-//router.delete('/:id', deletePost);
-//router.patch('/:id/likePost', likePost);
+router.patch('/:id', updateRoom);
+
+router.delete('/:id', deleteRoom);
  
 export default router;

@@ -19,6 +19,7 @@ const App  = () => {
 
     useEffect(() => {
         dispatch(getRooms(currentId));
+        console.log(currentId);
   }, [currentId, dispatch]);
 
 

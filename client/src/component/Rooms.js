@@ -5,19 +5,20 @@ import { useSelector } from 'react-redux';
 const Rooms = ({setCurrentId}) => {
 
 const rooms = useSelector((state) => state.rooms);
-    return <div className="container">        
 
-        { !rooms.length ? <p>Loading ...</p> : 
-        <>
+    return (       
+         !rooms.length ? <p>Loading ...</p> : 
+        (
+            <div className="container">
             {rooms.map((room)=>(
                 <div key ={room._id}>
                     <Room room={room}
                     setCurrentId={setCurrentId}/>
                 </div >
             ))}
-        </>}
-
-        </div>
-}
+            </div>
+        )
+    ); 
+};
 
 export default Rooms

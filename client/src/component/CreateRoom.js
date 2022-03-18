@@ -40,12 +40,12 @@ const CreateRoom = ({currentId, setCurrentId }) => {
 
 
 return <div className="borderline">
-<Form>
+        
+<Form>   
     <Form.Group className="mb-3" 
-    controlId="formBasicEmail"
->
+    controlId="formBasicEmail">
       
-    <Form.Label>Room No.</Form.Label>
+    <Form.Label className='quick'>{currentId ? `Updating Room "${room.name}"` : "Create a room "}</Form.Label>
     <Form.Control type="text" 
     placeholder="Enter Room Name/No." 
     value={roomData.name} 
@@ -68,7 +68,7 @@ return <div className="borderline">
             setRoomData({ ...roomData, additionalInfo: e.target.value })} />    
   
 
-    <Form.Label>Additional info</Form.Label>
+    <Form.Label>Room Status</Form.Label>
     <Form.Control type="text" 
     placeholder="Enter Price" 
     value={roomData.roomStatus}
@@ -77,10 +77,9 @@ return <div className="borderline">
   </Form.Group>
 
 
-  <Button variant="primary" 
-  type="submit" 
-    onClick={handleSubmit}
- >
+<Button variant="primary" 
+    type="submit" 
+    onClick={handleSubmit}>
     Submit
   </Button>
 </Form>
