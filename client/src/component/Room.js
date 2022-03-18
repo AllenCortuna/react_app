@@ -8,7 +8,7 @@ const Room  = ({ room, setCurrentId }) => {
  return   <div className="borderline">
         <p className='quick'>{room.name}</p>
         <p>{room.price}</p>
-        <p>{room.additionalInfo} </p>
+        <p>{room.additionalInfo}</p>
         <p>{room.roomStatus}</p>
         <p>{moment(room.createdAt).fromNow()}</p>
 

@@ -31,9 +31,8 @@ export const createRoom = async (req, res) => {
 
     const {name,price,additionalInfo,roomStatus} = req.body;
 
-    const roomPost = new RoomPost({name,price,additionalInfo,roomStatus})
+    const newRoomPost = new RoomPost({name,price,additionalInfo,roomStatus});
     try {
-        console.log("409 await");
         await newRoomPost.save();
         res.status(201).json(RoomPost);
     } catch (error) {

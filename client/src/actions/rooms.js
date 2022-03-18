@@ -19,7 +19,6 @@ export const createRoom = (room) => async (dispatch) => {
         console.log("room uploaded");
   } catch (error) {
     console.log(error.message);
-        console.log("room not uploaded");
   }
 };
 
@@ -37,7 +36,6 @@ export const updateRoom = (id, room) => async (dispatch) => {
 export const deleteRoom = (id) => async (dispatch) => {
   try {
     await api.deleteRoom(id);
-
     dispatch({ type: DELETE, payload: id });
   } catch (error) {
     console.log(error.message);

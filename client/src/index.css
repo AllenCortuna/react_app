@@ -137,6 +137,9 @@ tr:nth-child(odd) {
   background-color: #f2f2f2;
 }
 
+.inline{
+    display: inline;
+}
 /* HOTEL GRID DISPLAY */
 .img {
   width: 100%;
@@ -147,3 +150,4 @@ tr:nth-child(odd) {
   width: 15%;
   margin-right: 5%;
 }
+
