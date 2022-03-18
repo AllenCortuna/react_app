@@ -4,7 +4,7 @@ const roomSchema = mongoose.Schema({
     name: String,
     price: String,
     additionalInfo: String,
-    roomStatus: Boolean,
+    roomStatus: String,
     updatedAt: {
         type: Date,
         default: new Date(),
@@ -12,6 +12,5 @@ const roomSchema = mongoose.Schema({
 
 })
 
-var RoomPost  = mongoose.model('RoomPost', roomSchema);
-
+var RoomPost = mongoose.model('RoomPost', roomSchema);
 export default RoomPost;

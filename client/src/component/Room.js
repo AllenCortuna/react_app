@@ -5,15 +5,17 @@ import moment from 'moment';
 //const dispatch = useDispatch();
 //import { , deletePost } from '../../../actions/posts';
 const Room  = ({ room, setCurrentId }) => {
-    return<p>
-    {room.name}
-    {room.price}
-    {room.adiitionalInfo}
-    {room.roomStatus}
-    {moment(room.createdAt).fromNow()}
+ return   <div className="borderline">
+        <p className='quick'>{room.name}</p>
+        <p>{room.price}</p>
+        <p>{room.additionalInfo} </p>
+        <p>{room.roomStatus}</p>
+        <p>{moment(room.createdAt).fromNow()}</p>
 
-    </p>
-        
+</div>
+    
+    
+    
     
 }
 export default Room

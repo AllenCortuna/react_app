@@ -3,18 +3,16 @@ import React, { useState, useEffect } from 'react'
 import {Form,Button} from 'react-bootstrap'
 import {createRoom,updateRoom} from '../actions/rooms'
 
-
-
 const CreateRoom = ({currentId, setCurrentId }) => {
 
 
     const [roomData, setRoomData] = useState({
         name: '', 
         price: '',  
-        adiitionalInfo:'',
-        roomStatus: false});
-
-    const room = useSelector((state) => (currentId ? state.rooms.find((message) => message._id === currentId) : null));
+        additionalInfo:'',
+        roomStatus:'unavailable'});
+    
+    const room = useSelector((state) => (currentId ? state.rooms.find((price) => price._id === currentId) : null));
    
     const dispatch = useDispatch();
 
@@ -24,29 +22,27 @@ const CreateRoom = ({currentId, setCurrentId }) => {
  
     const clear = () => {
     setCurrentId(0);
-    setRoomData({ name: '', price: '', additionalInfo: '', roomStatus: false });
+    setRoomData({ name: '', price: '', additionalInfo: '', roomStatus:'unavailable'});
   };
 
     const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (currentId === 0) {
-      dispatch(createRoom(roomData));
-      clear();
+        dispatch(createRoom(roomData));
+        console.log("createRoom(roomData)");
+        clear();
     } else {
-      dispatch(updateRoom(currentId, roomData));
-      clear();
+        console.log("updatedRoom");
+        dispatch(updateRoom(currentId, roomData));
+        clear();
     }
   };
 
-    //handleChange(e) {              
-    //setRoomData({...roomData, roomStatus : true});
-    //}
+
 return <div className="borderline">
 <Form>
     <Form.Group className="mb-3" 
     controlId="formBasicEmail"
-    onSubmit={handleSubmit}
 >
       
     <Form.Label>Room No.</Form.Label>
@@ -63,26 +59,28 @@ return <div className="borderline">
     onChange={(e) => 
             setRoomData({ ...roomData, price: e.target.value })} />    
 
-    
+
     <Form.Label>Additional info</Form.Label>
     <Form.Control type="text" 
-    placeholder="category/features" 
+    placeholder="Enter Price" 
     value={roomData.additionalInfo}
     onChange={(e) => 
             setRoomData({ ...roomData, additionalInfo: e.target.value })} />    
-
   
-    <Form.Check 
-    type="checkbox" 
-    label="Available?" 
-    onChange={e => 
-            setRoomData({ ...roomData, additionalInfo: e.target.value })} />    
 
-
+    <Form.Label>Additional info</Form.Label>
+    <Form.Control type="text" 
+    placeholder="Enter Price" 
+    value={roomData.roomStatus}
+    onChange={(e) => 
+            setRoomData({ ...roomData, roomStatus: e.target.value })} />    
   </Form.Group>
 
 
-  <Button variant="primary" type="submit">
+  <Button variant="primary" 
+  type="submit" 
+    onClick={handleSubmit}
+ >
     Submit
   </Button>
 </Form>

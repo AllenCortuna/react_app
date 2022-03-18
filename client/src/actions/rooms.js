@@ -5,20 +5,21 @@ import * as api from '../api/index.js';
 export const getRooms = () => async (dispatch) => {
   try {
     const { data } = await api.fetchRooms();
-
+        console.log("data acquired ");
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
-    console.log(error.message);
+        console.log(error.message);
   }
 };
-
+ 
 export const createRoom = (room) => async (dispatch) => {
   try {
     const { data } = await api.createRoom(room);
-
     dispatch({ type: CREATE, payload: data });
+        console.log("room uploaded");
   } catch (error) {
     console.log(error.message);
+        console.log("room not uploaded");
   }
 };
 

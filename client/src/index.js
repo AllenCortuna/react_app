@@ -2,7 +2,7 @@
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from 'react-dom';
-import App from './App.js';
+import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Provider } from 'react-redux';

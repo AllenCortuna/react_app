@@ -5,7 +5,7 @@ import RoomPost from '../models/postRoom.js';
 
 const router = express.Router();
 
-export const getRoom = async (req, res) => { 
+export const getRooms = async (req, res) => { 
     try {
         const roomPost= await RoomPost.find()
                 
@@ -15,17 +15,29 @@ export const getRoom = async (req, res) => {
     }
 }
 
-
-export const createRoom = async (req, res) => {
-    const { title, message, selectedFile, creator, tags } = req.body;
-
-    const roomPost = new RoomPost({name, location,roomAvailable,image,roomAvailable})
+export const getRoom = async (req, res) => { 
+    const { id } = req.params;
 
     try {
-        await newRoomPost.save();
-
-        res.status(201).json(newRoomPost );
+        const room = await RoomPost.findById(id);
+        res.status(200).json(room);
     } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
+
+export const createRoom = async (req, res) => {
+
+    const {name,price,additionalInfo,roomStatus} = req.body;
+
+    const roomPost = new RoomPost({name,price,additionalInfo,roomStatus})
+    try {
+        console.log("409 await");
+        await newRoomPost.save();
+        res.status(201).json(RoomPost);
+    } catch (error) {
+        console.log(RoomPost);
         res.status(409).json({ message: error.message });
     }
 }
