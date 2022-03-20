@@ -1,6 +1,5 @@
 import express from 'express';
 import mongoose from 'mongoose';
-
 import RoomPost from '../models/postRoom.js';
 
 const router = express.Router();
@@ -29,9 +28,9 @@ export const getRoom = async (req, res) => {
 
 export const createRoom = async (req, res) => {
 
-    const {name,price,additionalInfo,roomStatus} = req.body;
+    const {name,price,category,roomStatus} = req.body;
 
-    const newRoomPost = new RoomPost({name,price,additionalInfo,roomStatus});
+    const newRoomPost = new RoomPost({name,price,category,roomStatus});
     try {
         await newRoomPost.save();
         res.status(201).json(RoomPost);

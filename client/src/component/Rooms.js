@@ -13,7 +13,7 @@ const rooms = useSelector((state) => state.rooms);
             {rooms.map((room)=>(
                 <div key ={room._id}>
                     <Room room={room}
-                    setCurrentId={setCurrentId}/>
+                     setCurrentId={setCurrentId}/>
                 </div >
             ))}
             </div>

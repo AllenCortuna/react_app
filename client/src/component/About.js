@@ -1,10 +1,8 @@
 
-import { Link } from 'react-router-dom';
+
+
+import LinkTo from './Link';
 const About = () =>{
-  function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
 
     return <div className="container">
         <div className="borderline">
@@ -18,9 +16,7 @@ const About = () =>{
 Meet our team 
 
             </p>
-            <Link to='/' onClick={topFunction}
-            className='link' 
-        >Back</Link>
+            <LinkTo path={'/'}/>
         </div>
         </div>
 }

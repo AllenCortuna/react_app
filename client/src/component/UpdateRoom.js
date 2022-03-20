@@ -1,42 +1,47 @@
+
+
+
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react'
 import {Form,Button} from 'react-bootstrap'
-import {createRoom,updateRoom} from '../actions/rooms'
+import {createRoom,updateRoom,getRooms} from '../actions/rooms'
 
-const CreateRoom = ({currentId, setCurrentId }) => {
-
+const UpdateRoom = ({currentId, setCurrentId }) => {
 
     const [roomData, setRoomData] = useState({
         name: '', 
         price: '',  
-        additionalInfo:'',
-        roomStatus:'unavailable'});
+        category:'',
+        roomStatus:false});
     
-    const room = useSelector((state) => (currentId ? state.rooms.find((price) => price._id === currentId) : null));
+    const room = useSelector((state) => (currentId ? state.rooms.find((name) => name._id === currentId) : null));
    
     const dispatch = useDispatch();
 
     useEffect(() => {
     if (room) setRoomData(room);
-  }, [room]);
- 
+    }, [room]);
+
+    useEffect(() => {
+        dispatch(getRooms(currentId));
+    }, [currentId, dispatch]);
+
+    
     const clear = () => {
     setCurrentId(0);
-    setRoomData({ name: '', price: '', additionalInfo: '', roomStatus:'unavailable'});
-  };
+    setRoomData({ name: '', price: '', category: '', roomStatus:false});
+    };
 
     const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (currentId === 0) {
+        e.preventDefault();
+    if (currentId === 0){
         dispatch(createRoom(roomData));
-        console.log("createRoom(roomData)");
         clear();
     } else {
-        console.log("updatedRoom");
-        dispatch(updateRoom(currentId, roomData));
+        dispatch(updateRoom(currentId, ));
         clear();
     }
-  };
+    };
 
 
 return <div className="borderline">
@@ -45,37 +50,38 @@ return <div className="borderline">
     <Form.Group className="mb-3" 
     controlId="formBasicEmail">
       
-    <Form.Label className='quick'>{currentId ? `Updating Room "${room.name}"` : "Create a room "}</Form.Label>
+    <Form.Label className='quick'>{currentId ? `Updating Room ${room.name}` : "Create a room "}</Form.Label>
     <Form.Control type="text" 
+    maxLength="20"
     placeholder="Enter Room Name/No." 
     value={roomData.name} 
     onChange={(e) => 
             setRoomData({ ...roomData, name: e.target.value })} />
 
-    <Form.Label>Price</Form.Label>
     <Form.Control type="text" 
+    maxLength="10"
     placeholder="Enter Price" 
     value={roomData.price}
     onChange={(e) => 
             setRoomData({ ...roomData, price: e.target.value })} />    
 
-
-    <Form.Label>Additional info</Form.Label>
     <Form.Control type="text" 
-    placeholder="Enter Price" 
-    value={roomData.additionalInfo}
+    maxLength="20"
+    placeholder="Category" 
+    value={roomData.category}
     onChange={(e) => 
-            setRoomData({ ...roomData, additionalInfo: e.target.value })} />    
-  
+            setRoomData({ ...roomData, category: e.target.value })} />    
 
-    <Form.Label>Room Status</Form.Label>
-    <Form.Control type="text" 
-    placeholder="Enter Price" 
-    value={roomData.roomStatus}
-    onChange={(e) => 
-            setRoomData({ ...roomData, roomStatus: e.target.value })} />    
+    
+    <Form.Check
+    type="checkbox"
+    id="disabledFieldsetCheck"
+    label="Available"
+    checked={true}
+    onChange={ (e) =>
+            setRoomData({ ...roomData, category: e.target.checked })} />    
+
   </Form.Group>
-
 
 <Button variant="primary" 
     type="submit" 
@@ -87,4 +93,5 @@ return <div className="borderline">
 
 }
 
-export default CreateRoom
+
+export default UpdateRoom

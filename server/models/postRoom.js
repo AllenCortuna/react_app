@@ -3,8 +3,8 @@ import mongoose from 'mongoose';
 const roomSchema = mongoose.Schema({
     name: String,
     price: String,
-    additionalInfo: String,
-    roomStatus: String,
+    category: String,
+    roomStatus: Boolean,
     updatedAt: {
         type: Date,
         default: new Date(),
