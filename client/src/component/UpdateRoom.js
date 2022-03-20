@@ -77,9 +77,8 @@ return <div className="borderline">
     type="checkbox"
     id="disabledFieldsetCheck"
     label="Available"
-    checked={true}
     onChange={ (e) =>
-            setRoomData({ ...roomData, category: e.target.checked })} />    
+            setRoomData({ ...roomData, roomStatus: e.target.value })} />    
 
   </Form.Group>
 

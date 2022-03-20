@@ -25,8 +25,8 @@ const dispatch = useDispatch();
         <p className='quick'>{room.name}</p>
         <p className='font'>{room.price}</p>
         <p className='font'>{room.category}</p>
-        {/*    <p className='quick'>{room.roomStatus ? "available" : "unavailable"}</p>
-        <p className='font'>{moment(room.createdAt).fromNow()}</p>   */}
+        <p className='quick'>{room.roomStatus ? "available" : "unavailable"}</p>
+        {/* <p className='font'>{moment(room.createdAt).fromNow()}</p>   */}
         <hr/>
 
 {/*CONTROL BUTTON FOR ROOMS*/}

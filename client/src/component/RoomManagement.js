@@ -9,11 +9,11 @@ import { getRooms } from '../actions/rooms';
 import LinkTo from './Link';
 
 const RoomManagement = () => {
-    const [currentId, setCurrentId] = useState(0);
+    const [currentId, setCurrentId] = useState(null);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getRooms(currentId));
+        dispatch(getRooms());
     }, [currentId, dispatch]);
 
     {/*TOGGLE UPDATE ROOM CONTROL */}   
@@ -21,8 +21,8 @@ const RoomManagement = () => {
 
         <Rooms setCurrentId={setCurrentId}/>
         <UpdateRoom currentId={currentId} setCurrentId={setCurrentId}/>
-
-        <LinkTo path={'/RoomManagement'} label={'Room Management'}/>
+<br/><br/>
+<LinkTo path={'/RoomStatus'} label={'Room Status'}/>
         
     </div>
 
