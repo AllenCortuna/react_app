@@ -4,13 +4,16 @@ const roomSchema = mongoose.Schema({
     name: String,
     price: String,
     category: String,
-    roomStatus: Boolean,
+    roomStatus: {
+        type: Boolean,
+        default: false,
+    },
     updatedAt: {
         type: Date,
         default: new Date(),
     },
 
-})
+});
 
 var RoomPost = mongoose.model('RoomPost', roomSchema);
 export default RoomPost;

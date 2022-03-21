@@ -1,10 +1,12 @@
+
+
+
 import Room from './Room'
-//import CreateRoom from './CreateRoom'
 import { useSelector } from 'react-redux';
 
 const Rooms = ({setCurrentId}) => {
 
-const rooms = useSelector((state) => state.rooms);
+    const rooms = useSelector((state) => state.rooms);
 
     return (       
          !rooms.length ? <p>Loading ...</p> : 

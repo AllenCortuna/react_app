@@ -4,7 +4,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react'
 import {Form,Button} from 'react-bootstrap'
-import {createRoom,updateRoom,getRooms} from '../actions/rooms'
+import {createRoom,updateRoom,getRooms} from '../../actions/rooms'
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
 
@@ -13,36 +13,39 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
         price: '',  
         category:'',
         roomStatus:false});
-    
-    const room = useSelector((state) => (currentId ? state.rooms.find((name) => name._id === currentId) : null));
+
+    const room = useSelector((state) => (currentId ? state.rooms.find((price) => price._id === currentId) : null));
    
     const dispatch = useDispatch();
 
     useEffect(() => {
-    if (room) setRoomData(room);
+        if (room) setRoomData(room);
+        getRooms()
     }, [room]);
 
-    useEffect(() => {
-        dispatch(getRooms(currentId));
-    }, [currentId, dispatch]);
-
-    
     const clear = () => {
     setCurrentId(0);
-    setRoomData({ name: '', price: '', category: '', roomStatus:false});
+        setRoomData({   name: '', 
+                        price: '', 
+                        category: '', 
+                        roomStatus:false});
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    if (currentId === 0){
-        dispatch(createRoom(roomData));
-        clear();
-    } else {
-        dispatch(updateRoom(currentId, ));
-        clear();
-    }
+        if (currentId === 0){
+            dispatch(createRoom(roomData));
+            dispatch(getRooms)
+            clear();
+        } else {
+            dispatch(updateRoom(currentId,roomData));
+            clear();
+        }
     };
 
+    const toggleCheck = () => {
+        roomData.roomStatus ? setRoomData({...roomData, roomStatus: false}) : setRoomData({...roomData, roomStatus: true})
+    }
 
 return <div className="borderline">
         
@@ -65,28 +68,28 @@ return <div className="borderline">
     onChange={(e) => 
             setRoomData({ ...roomData, price: e.target.value })} />    
 
+
     <Form.Control type="text" 
-    maxLength="20"
-    placeholder="Category" 
+    maxLength="10"
+    placeholder="category" 
     value={roomData.category}
     onChange={(e) => 
             setRoomData({ ...roomData, category: e.target.value })} />    
-
     
     <Form.Check
     type="checkbox"
     id="disabledFieldsetCheck"
     label="Available"
-    onChange={ (e) =>
-            setRoomData({ ...roomData, roomStatus: e.target.value })} />    
+    checked={roomData.roomStatus}
+    onChange={toggleCheck}/>    
 
   </Form.Group>
 
-<Button variant="primary" 
+    <Button variant="primary" 
     type="submit" 
     onClick={handleSubmit}>
     Submit
-  </Button>
+    </Button>
 </Form>
         </div> 
 
