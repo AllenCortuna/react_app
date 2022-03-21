@@ -1,11 +1,10 @@
 
-
+import img  from './img/img.jpg';
 import LinkTo from './Link'
-import RoomManagement from './RoomManagement';
 const Home = () => {
-    return <div className="container">
+    return <div>
+        <img src={img} alt="" className='img'/>
         <h1 className="quick">Room Hunt Index Page</h1>
-        
     <LinkTo path={'/RoomManagement'} label={'Room Management'}/>
         </div>
 }

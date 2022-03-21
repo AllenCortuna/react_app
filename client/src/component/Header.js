@@ -9,7 +9,7 @@ const Header = () => {
         variant="dark" 
         expand="false" 
         bsPrefix='navbar'>
-      <Navbar.Brand className='quick'>Room Hunt 
+        <Navbar.Brand className='quick'>Room Hunt 
 <p className="font quick" style={{display:'inline', marginLeft:'5%'}}>Mamburao</p>
 
       </Navbar.Brand>

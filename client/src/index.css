@@ -6,6 +6,12 @@
   box-sizing: border-box;
   font-family: 'Red Hat Display', sans-serif;
 }
+body{
+    background-color: #ff9d00;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25' viewBox='0 0 1600 800'%3E%3Cg stroke='%23000' stroke-width='66.7' stroke-opacity='0.05' %3E%3Ccircle fill='%23ff9d00' cx='0' cy='0' r='1800'/%3E%3Ccircle fill='%23f19602' cx='0' cy='0' r='1700'/%3E%3Ccircle fill='%23e28f04' cx='0' cy='0' r='1600'/%3E%3Ccircle fill='%23d48806' cx='0' cy='0' r='1500'/%3E%3Ccircle fill='%23c58108' cx='0' cy='0' r='1400'/%3E%3Ccircle fill='%23b77909' cx='0' cy='0' r='1300'/%3E%3Ccircle fill='%23a8720b' cx='0' cy='0' r='1200'/%3E%3Ccircle fill='%239a6b0d' cx='0' cy='0' r='1100'/%3E%3Ccircle fill='%238b640f' cx='0' cy='0' r='1000'/%3E%3Ccircle fill='%237d5d11' cx='0' cy='0' r='900'/%3E%3Ccircle fill='%236e5613' cx='0' cy='0' r='800'/%3E%3Ccircle fill='%23604f15' cx='0' cy='0' r='700'/%3E%3Ccircle fill='%23514817' cx='0' cy='0' r='600'/%3E%3Ccircle fill='%23434018' cx='0' cy='0' r='500'/%3E%3Ccircle fill='%2334391a' cx='0' cy='0' r='400'/%3E%3Ccircle fill='%2326321c' cx='0' cy='0' r='300'/%3E%3Ccircle fill='%23172b1e' cx='0' cy='0' r='200'/%3E%3Ccircle fill='%23092420' cx='0' cy='0' r='100'/%3E%3C/g%3E%3C/svg%3E");
+background-attachment: fixed;
+background-size: cover;
+}
 .font {
   font-size: 12px;
 }
@@ -24,7 +30,7 @@
 }
 .header {
   box-sizing: border-box;
-  box-shadow: 0 2px 4px 0 grey;
+  box-shadow: 0 2px 2px 0px black;
   margin-bottom: 4%;
 }
 .header a {
@@ -49,6 +55,7 @@
   padding: 5%;
   height: auto;
   margin-top: 3%;
+  background-color: rgb(242, 242, 242);
 }
 .link {
   padding: 10px 20px;
