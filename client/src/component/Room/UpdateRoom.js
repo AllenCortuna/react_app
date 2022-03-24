@@ -4,7 +4,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react'
 import {Form,Button} from 'react-bootstrap'
-import {createRoom,updateRoom,getRooms} from '../../actions/rooms'
+import {createRoom,updateRoom} from '../../actions/rooms'
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
 
@@ -12,7 +12,7 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
             name: '', 
             price: '',  
             category:'',
-            roomStatus:false});
+            roomStatus:false,});
 
     const room = useSelector((state) => (currentId ? state.rooms.find((name) => name._id === currentId) : null));
    
@@ -31,7 +31,6 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     };
 
     const handleSubmit = async (e) => {
-        console.log("handleSubmit");
         e.preventDefault();
         if (currentId === 0){
             dispatch(createRoom(roomData));
@@ -53,7 +52,7 @@ return <div className="borderline">
     <Form.Group className="mb-3" 
     controlId="formBasicEmail">
       
-    <Form.Label className='quick'>{currentId ? `Updating Room ${room.name}` : "Create a room "}</Form.Label>
+    <Form.Label className='quick'>{currentId ? `Updating ${room.name}` : "Create a room "}</Form.Label>
     <Form.Control type="text" 
     maxLength="20"
     placeholder="Enter Room Name/No." 

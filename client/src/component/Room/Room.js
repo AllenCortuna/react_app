@@ -1,6 +1,6 @@
 
 import {Button,} from 'react-bootstrap'
-import Moment from 'react-moment';
+import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import {GrMore} from "react-icons/gr";
 import {FcDeleteColumn} from "react-icons/fc";
@@ -15,12 +15,7 @@ const Room  = ({ room, setCurrentId }) => {
     function downFunction() {
         window.scrollTo(0, 50000);
         setCurrentId(room._id);
-        console.log("room id: ",room._id);
   }
-    
-    useEffect(() => {
-        setCurrentId(room._id);
-    },[])
 
     return <div className="borderline" 
     style={{width:'15rem'}}>
@@ -43,13 +38,11 @@ const Room  = ({ room, setCurrentId }) => {
         </tr>
         <tr>
             <td className='quick'>Status</td>
-            <td>{room.roomStatus ? "Available" : "Unavailable"}</td>
+            {room.roomStatus ? <td className="green">Available</td> : <td className="red">Unvailable</td> }
         </tr>
         <tr>
             <td className='quick'>Last Update</td>
-            {/*  <td>{moment(room.updatedAt).fromNow()}</td>*/}
-            <td><Moment format="MM/DD/YY H:MM" 
- date={room.updatedAt}/></td>
+            <td>{moment(room.updatedAt).fromNow()}</td>
         </tr>
     </tbody>
     </table>
