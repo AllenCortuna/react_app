@@ -6,7 +6,7 @@ const roomSchema = mongoose.Schema({
     category: String,
     roomStatus: {
         type: Boolean,
-        default: false,
+        default: false
     },
     updatedAt: {
         type: Date,

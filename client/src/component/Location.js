@@ -62,10 +62,8 @@ return <div className="container">
     {/* ROOM AVAILABLE */}
     <p className='quick'>Room Available : &nbsp; 
     {a.roomAvailable ? 
-            <p style={{display:'inline'}} className='green quick'>
-            {a.roomAvailable}</p> :
-            <p className='red font' style={{display:'inline'}}>
-            No Room Available</p>
+            <p style={{display:'inline'}} className='green quick'> {a.roomAvailable}</p> :
+            <p className='red font' style={{display:'inline'}}>No Room Available</p>
     }</p>
 <p className='quick font'>Updated At: &nbsp;{a.updatedAt}</p>
     </Card.Text>

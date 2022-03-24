@@ -9,22 +9,21 @@ import {createRoom,updateRoom,getRooms} from '../../actions/rooms'
 const UpdateRoom = ({currentId, setCurrentId }) => {
 
     const [roomData, setRoomData] = useState({
-        name: '', 
-        price: '',  
-        category:'',
-        roomStatus:false});
+            name: '', 
+            price: '',  
+            category:'',
+            roomStatus:false});
 
-    const room = useSelector((state) => (currentId ? state.rooms.find((price) => price._id === currentId) : null));
+    const room = useSelector((state) => (currentId ? state.rooms.find((name) => name._id === currentId) : null));
    
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (room) setRoomData(room);
-        getRooms()
-    }, [room]);
+    }, [room,currentId]);
 
     const clear = () => {
-    setCurrentId(0);
+        setCurrentId(0);
         setRoomData({   name: '', 
                         price: '', 
                         category: '', 
@@ -32,10 +31,10 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     };
 
     const handleSubmit = async (e) => {
+        console.log("handleSubmit");
         e.preventDefault();
         if (currentId === 0){
             dispatch(createRoom(roomData));
-            dispatch(getRooms)
             clear();
         } else {
             dispatch(updateRoom(currentId,roomData));
@@ -44,8 +43,9 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     };
 
     const toggleCheck = () => {
-        roomData.roomStatus ? setRoomData({...roomData, roomStatus: false}) : setRoomData({...roomData, roomStatus: true})
-    }
+        roomData.roomStatus ? setRoomData({...roomData, roomStatus: false}) : setRoomData({...roomData, roomStatus: true})}
+
+
 
 return <div className="borderline">
         
@@ -61,7 +61,7 @@ return <div className="borderline">
     onChange={(e) => 
             setRoomData({ ...roomData, name: e.target.value })} />
 
-    <Form.Control type="text" 
+    <Form.Control type="number" 
     maxLength="10"
     placeholder="Enter Price" 
     value={roomData.price}

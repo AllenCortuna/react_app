@@ -6,7 +6,7 @@ import {GrMore} from "react-icons/gr";
 import {FcDeleteColumn} from "react-icons/fc";
 import { deleteRoom } from '../../actions/rooms';
 import React, { useState, useEffect } from 'react';
-import {getRooms } from '../../actions/rooms';
+import { getRooms } from '../../actions/rooms';
 
 const Room  = ({ room, setCurrentId }) => {
 
@@ -19,7 +19,7 @@ const Room  = ({ room, setCurrentId }) => {
   }
     
     useEffect(() => {
-        setCurrentId(room._id);
+        getRooms()
     },[])
 
     return <div className="borderline" 
@@ -27,9 +27,9 @@ const Room  = ({ room, setCurrentId }) => {
     <table>
         <thead>
         <tr>
-            <th className="quick">Room No/Name:</th>
             <th style={{fontSize: '14px'}} 
-                className='quick'>{room.name}</th>
+                className='quick'
+                colSpan='2'>{room.name}</th>
         </tr>
         </thead>
     <tbody>
@@ -53,6 +53,7 @@ const Room  = ({ room, setCurrentId }) => {
         </tr>
     </tbody>
     </table>
+        <hr/>
 
 {/*CONTROL BUTTON FOR ROOMS*/}
     <div className="grid">
@@ -74,3 +75,4 @@ const Room  = ({ room, setCurrentId }) => {
     
 }
 export default Room
+

@@ -1,23 +1,11 @@
-
-
-
 import Room from './Room'
-import {useSelector } from 'react-redux';
-import React, { useState, useEffect } from 'react';
-import { getRooms } from '../../actions/rooms';
+import { useSelector } from 'react-redux';
 
-
-const Rooms = ({currentId,setCurrentId}) => {
+const Rooms = ({setCurrentId}) => {
 
     const rooms = useSelector((state) => state.rooms);
-
-    useEffect(() => {
-        getRooms();
-    },[currentId,rooms]);
-
     return (       
-        !rooms.length ? 
-        <p>Loading ...</p>  :
+         !rooms.length ? <p>Loading ...</p> : 
         (
             <div className="container">
             {rooms.map((room)=>(
@@ -31,5 +19,3 @@ const Rooms = ({currentId,setCurrentId}) => {
         )
     ); 
 };
-
-export default Rooms

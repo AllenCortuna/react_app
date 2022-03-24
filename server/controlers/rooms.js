@@ -7,7 +7,6 @@ const router = express.Router();
 export const getRooms = async (req, res) => { 
     try {
         const roomPost= await RoomPost.find()
-                
         res.status(200).json(roomPost);
     } catch (error) {
         res.status(404).json({ message: error.message });
@@ -34,6 +33,7 @@ export const createRoom = async (req, res) => {
     try {
         await newRoomPost.save();
         res.status(201).json(RoomPost);
+        console.log("room created");
     } catch (error) {
         console.log(RoomPost);
         res.status(409).json({ message: error.message });
