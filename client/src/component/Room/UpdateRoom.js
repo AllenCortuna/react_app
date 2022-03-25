@@ -7,12 +7,13 @@ import {Form,Button} from 'react-bootstrap'
 import {createRoom,updateRoom} from '../../actions/rooms'
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
-
     const [roomData, setRoomData] = useState({
             name: '', 
-            price: '',  
+            price: '', 
             category:'',
-            roomStatus:false,});
+            roomStatus:false,
+            updatedAt: new Date()
+    });
 
     const room = useSelector((state) => (currentId ? state.rooms.find((name) => name._id === currentId) : null));
    
@@ -27,7 +28,9 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
         setRoomData({   name: '', 
                         price: '', 
                         category: '', 
-                        roomStatus:false});
+                        roomStatus:false,
+                        updatedAt: new Date()
+        });
     };
 
     const handleSubmit = async (e) => {

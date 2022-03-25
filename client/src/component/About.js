@@ -16,7 +16,7 @@ const About = () =>{
 Meet our team 
 
             </p>
-            <LinkTo path={'/'}/>
+            <LinkTo path={'/'} label={'Back'}/>
         </div>
         </div>
 }

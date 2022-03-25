@@ -15,7 +15,7 @@ const Rooms = ({currentId,setCurrentId}) => {
 
     useEffect(() => {
         dispatch(getRooms());
-    },[rooms.length])
+    },[rooms.length,dispatch])
 
     return (       
         !rooms.length ? 

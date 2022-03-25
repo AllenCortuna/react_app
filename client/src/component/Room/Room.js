@@ -30,7 +30,7 @@ const Room  = ({ room, setCurrentId }) => {
     <tbody>
         <tr>
             <td className='quick'>Price</td>
-            <td>{room.price}</td>
+            <td>Php {room.price}</td>
         </tr>
         <tr>
             <td className='quick'>Category</td>

@@ -10,8 +10,9 @@ function topFunction() {
         <div>
         <hr/>
         <ul>
-            <li><Link to='/term' onClick={topFunction}> Term & Conditions</Link></li>
+            <li><Link to='/term&condition' onClick={topFunction}> Term & Conditions</Link></li>
             <li><Link to='/contact' onClick={topFunction}> Contact Us</Link></li>
+            <li><Link to='/tuturial' onClick={topFunction}></Link></li>
         </ul>
         <hr/>
         </div>
