@@ -5,8 +5,6 @@ import { useDispatch } from 'react-redux';
 import {GrMore} from "react-icons/gr";
 import {FcDeleteColumn} from "react-icons/fc";
 import { deleteRoom } from '../../actions/rooms';
-import React, { useState, useEffect } from 'react';
-import {getRooms } from '../../actions/rooms';
 
 const Room  = ({ room, setCurrentId }) => {
 

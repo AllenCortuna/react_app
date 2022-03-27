@@ -1,8 +1,6 @@
 
 
 
-//import React, { useState, useEffect } from 'react';
-//import { useDispatch } from 'react-redux';
 import './index.css';
 import {BrowserRouter as Router,Route,Routes} from 'react-router-dom';
 import Header  from './component/Header';
@@ -12,7 +10,7 @@ import NotFound from './component/NotFound';
 import Location from './component/Location'
 import RoomManagement from './component/Room/RoomManagement'
 import Home  from './component/Home';
-
+import SignUp from './component/Auth/Auth'
 const App  = () => {
 
     return <Router>
@@ -31,6 +29,9 @@ const App  = () => {
 
             <Route path='/about'
              element={<About />} />
+
+            <Route path='/register'
+             element={<SignUp />} />
 
             <Route path='/*'
             element={<NotFound />} />
