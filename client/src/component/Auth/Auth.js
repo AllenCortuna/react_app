@@ -27,11 +27,9 @@ const SignUp = () => {
         setForm(initialState);
         setIsSignup((prevIsSignup) => !prevIsSignup);
     }
-
-    const googleSuccess = async (res) => {
+   const googleSuccess = async (res) => {
         const result = res.profileObj;
         const token = res.tokeId;
-
         try {
             dispatch({ type: AUTH, data : {result, token }});
             history.push('/');
@@ -39,8 +37,8 @@ const SignUp = () => {
             console.log(error);
         }
     }
-
     const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
+
 
     const handleChange = (e) => setForm({
         ...form, [e.target.hotelName]: e.target.value 
@@ -49,7 +47,7 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(isSignup) {
-            console.log('form hotelName',form.hotelName);
+            console.log('form hotelName',form.email);
             dispatch(signup(form,history));
         }else{
             dispatch(signin(form,history));
@@ -92,8 +90,7 @@ const SignUp = () => {
     onClick={handleSubmit}>
     {isSignup ? 'Sign Up' : 'Sign In'}
     </Button>
-<p>   </p>
-    <GoogleLogin
+   <GoogleLogin
     clientId="228143511095-5grssm02791fvrtbrvh67pl7kr2ntgob.apps.googleusercontent.com"
     render={(renderProps) => (
         <Button  color="primary"
@@ -108,6 +105,7 @@ const SignUp = () => {
           />
 
     <hr/>
+
 
     
     <Button variant="none" 
