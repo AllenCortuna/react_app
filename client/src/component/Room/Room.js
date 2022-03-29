@@ -28,7 +28,7 @@ const Room  = ({ room, setCurrentId }) => {
     <tbody>
         <tr>
             <td className='quick'>Price</td>
-            <td>Php {room.price}</td>
+            <td><p className="quick inline">Php</p> {room.price}</td>
         </tr>
         <tr>
             <td className='quick'>Category</td>
@@ -36,7 +36,7 @@ const Room  = ({ room, setCurrentId }) => {
         </tr>
         <tr>
             <td className='quick'>Status</td>
-            {room.roomStatus ? <td className="green">Available</td> : <td className="red">Unvailable</td> }
+            {room.roomStatus ? <td className="quick green">Available</td> : <td className="grey">Unvailable</td> }
         </tr>
         <tr>
             <td className='quick'>Last Update</td>

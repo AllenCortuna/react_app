@@ -15,7 +15,7 @@ export const updateRoom = (id, updatedRoom) => API.patch(`/rooms/${id}`, updated
 export const deleteRoom = (id) => API.delete(`/rooms/${id}`);
 
 
-export const signIn = (formData) => API.post('/user/signIn', formData);
-export const signUp = (formData) => API.post('/user/signUp', formData);
+export const signIn = (formData) => API.post('/user/signin', formData);
+export const signUp = (formData) => API.post('/user/signup', formData);
 
 

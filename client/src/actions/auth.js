@@ -1,5 +1,5 @@
 import {AUTH} from '../constant';
-import * as api from '../api/index';
+import * as api from '../api/index.js';
 
 export const signin = (formData, router) => 
     async (dispatch) => {
@@ -10,7 +10,7 @@ export const signin = (formData, router) =>
             console.log('signin complete');
         } catch (error) {
             //bug
-            console.log('signin incomplete');
+            console.log('incompletei /actions/auth');
             console.log(error);
         }
     }
@@ -21,9 +21,9 @@ export const signup = (formData, router) =>
             const {data} = await api.signUp(formData);
             dispatch({type:AUTH, data});
             console.log("signup complete");
-            router.push('/')
+            router.navigate('/')//BUG push
         } catch (error) {
-            console.log("signup incomplete");
+            console.log("incomplete /auth/actions");
             console.log(error);
         }
     }

@@ -7,27 +7,34 @@ import { AUTH } from '../../constant';
 import { Form,Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 
-
-const initialState = {
-    hotelName: '',
-    email: '',
-    password: '',
-    confirmPassword: ''
-}
-
 const SignUp = () => {
 
-    const [form,setForm] = useState(initialState);
+    const [form,setForm] = useState({
+        hotelName: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    }
+    );
     const [isSignup,setIsSignup] = useState(false);
 
     const dispatch = useDispatch();
     const history = useNavigate();
 
+    const clear = () => {
+         setForm({
+            hotelName: '',
+            email: '',
+            password: '',
+            confirmPassword: ''
+        });
+    };
+
     const changeMode = () => {
-        setForm(initialState);
         setIsSignup((prevIsSignup) => !prevIsSignup);
-    }
-   const googleSuccess = async (res) => {
+    };
+//GOOGLE
+    const googleSuccess = async (res) => {
         const result = res.profileObj;
         const token = res.tokeId;
         try {
@@ -39,15 +46,11 @@ const SignUp = () => {
     }
     const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
-
-    const handleChange = (e) => setForm({
-        ...form, [e.target.hotelName]: e.target.value 
-    });
-
+// HANDLE SUBMIT
     const handleSubmit = (e) => {
         e.preventDefault();
         if(isSignup) {
-            console.log('form hotelName',form.email);
+            console.log('name',form.hotelName);
             dispatch(signup(form,history));
         }else{
             dispatch(signin(form,history));
@@ -62,34 +65,39 @@ const SignUp = () => {
     <Form.Control type="text" 
     placeholder="Enter Hotel Name"
     required
-    name='hotelName'
-    handleChange={handleChange} />    
+    value={form.hotelName}
+    onChange={(e) => 
+            setForm({ ...form, hotelName: e.target.value })} />    
     }
 
     <Form.Control type="email" 
     placeholder="email" 
     required
-    name='email'
-    handleChange={handleChange} />    
-
+    value = {form.email}
+    onChange={(e) => 
+            setForm({ ...form, email: e.target.value })} />    
 
     <Form.Control type="password" 
-    placeholder="Password" 
+    placeholder="Password"
     required
-    name='password'
-    handleChange={handleChange} />   
+    value = {form.password}
+    onChange={(e) => 
+            setForm({ ...form, password: e.target.value })} />    
+    
 
     {isSignup &&
     <Form.Control type="password" 
     placeholder="Confirm Password" 
-    name='confirmPassword'
-    handleChange={handleChange} />    
-    }
+    value = {form.confirmPassword}
+    onChange = {(e) => 
+            setForm({ ...form, confirmPassword: e.target.value })} />}
+
     <Button variant="primary" 
     type="submit" 
     onClick={handleSubmit}>
     {isSignup ? 'Sign Up' : 'Sign In'}
     </Button>
+
    <GoogleLogin
     clientId="228143511095-5grssm02791fvrtbrvh67pl7kr2ntgob.apps.googleusercontent.com"
     render={(renderProps) => (
@@ -101,22 +109,18 @@ const SignUp = () => {
             )}
             onSuccess={googleSuccess}
             onFailure={googleError}
-            cookiePolicy="single_host_origin"
-          />
+            cookiePolicy="single_host_origin"/>
 
     <hr/>
-
-
     
     <Button variant="none" 
     type="submit" 
     onClick={changeMode}>
-    {isSignup ? 'Already have an account? sign in' : 'Dont have an account? sign up'}
-    </Button> 
+    {isSignup ? 'Already have an account? sign in' : 'Dont have an account? sign up'}</Button> 
 
         </div>
 
-        </div>
+    </div>
 }
 
 export default SignUp;

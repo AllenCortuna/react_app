@@ -9,7 +9,6 @@ import About from './component/About';
 import NotFound from './component/NotFound';
 import Location from './component/Location'
 import RoomManagement from './component/Room/RoomManagement'
-import Home  from './component/Home';
 import SignUp from './component/Auth/Auth'
 const App  = () => {
 
@@ -19,13 +18,10 @@ const App  = () => {
     <Routes>
 
             <Route path='/'
-            element={<Home/>}/> 
+            element={<Location/>}/> 
            
             <Route path='/RoomManagement'
             element={<RoomManagement/>} />
-
-            <Route path='/location'
-            element={<Location/>} />
 
             <Route path='/about'
              element={<About />} />
