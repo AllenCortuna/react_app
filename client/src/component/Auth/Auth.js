@@ -39,10 +39,10 @@ const SignUp = () => {
         const token = res.tokeId;
         try {
             dispatch({ type: AUTH, data : {result, token }});
-            history.push('/');
+            history('/');//push
         } catch (error) {
             console.log(error);
-        }
+}
     }
     const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
@@ -50,7 +50,6 @@ const SignUp = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if(isSignup) {
-            console.log('name',form.hotelName);
             dispatch(signup(form,history));
         }else{
             dispatch(signin(form,history));

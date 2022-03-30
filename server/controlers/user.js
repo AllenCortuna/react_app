@@ -16,7 +16,7 @@ export const signin = async (req, res ) => {
 
         if (!isPasswordCorrect) return res.status(404).json({message: 'Invalid password'});
  
-        const token = jwt.sign({email: oldUser.email},secret,{expiresIn: '1w'});
+        const token = jwt.sign({email: oldUser.email},secret,{expiresIn: '1h'});
 
         res.status(200).json({result: oldUser,token});
     } catch (err) {
@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
 
         const result = await UserModel.findOne({email,password: hashedPassword, hotelName: hotelName});
 
-        const token = jwt.sign({email: result.email,id : result._id },secret, {expiresIn: '1w'})
+        const token = jwt.sign({email: result.email,id : result._id },secret, {expiresIn: '1h'})
 
         res.status(200).json({result: oldUser,token});
     } catch (err) {

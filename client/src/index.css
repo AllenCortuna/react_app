@@ -156,3 +156,14 @@ tr:nth-child(odd) {
   width: 15%;
   margin-right: 5%;
 }
+
+.hlink {
+  border-radius: 10px;
+  color: rgb(242, 242, 242);
+  border: 1px solid grey;
+  display: inline;
+  text-decoration: none;
+  float: right;
+  font-family: Quicksand,serif;
+  font-weight: 700;
+}

@@ -1,9 +1,10 @@
 import * as actionType from '../constant';
 
-const authReducer = (state ={authData: null},action) => {
+export default (state ={authData: null},action) => {
     switch (action.type){
+
     case actionType.AUTH:
-            localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
+        localStorage.setItem('profile', JSON.stringify({ ...action?.data }));
             console.log('reducers ok');
       return { ...state, authData: action.data, loading: false, errors: null };
 
@@ -18,6 +19,6 @@ const authReducer = (state ={authData: null},action) => {
   }
 };
 
-export default authReducer;
+//export default authReducer;
 
 

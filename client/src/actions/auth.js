@@ -10,7 +10,7 @@ export const signin = (formData, router) =>
             console.log('signin complete');
         } catch (error) {
             //bug
-            console.log('incompletei /actions/auth');
+            console.log('incomplete /actions/auth');
             console.log(error);
         }
     }
@@ -23,7 +23,7 @@ export const signup = (formData, router) =>
             console.log("signup complete");
             router.navigate('/')//BUG push
         } catch (error) {
-            console.log("incomplete /auth/actions");
+            console.log("incomplete /actions/auth");
             console.log(error);
         }
     }

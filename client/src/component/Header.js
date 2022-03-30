@@ -1,7 +1,36 @@
-import { Nav,Navbar} from 'react-bootstrap';
-
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import decode from 'jwt-decode';
+import * as actionType from '../constant';
+import {Nav,Navbar,Button} from 'react-bootstrap'
 const Header = () => {
+
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+    const dispatch = useDispatch();
+    const location = useLocation();
+    const history = useNavigate();
+
+    const logout = () => {
+        dispatch({ type: actionType.LOGOUT });
+
+        history('/register');
+
+        setUser(null);
+    };
+
+    useEffect(() => {
+        const token = user?.token;
+
+    if (token) {
+        const decodedToken = decode(token);
+
+    if (decodedToken.exp * 1000 < new Date().getTime()) logout();
+    }
+
+    setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [location]);
+
     return <div className='header' >
         <Navbar 
         collapseOnSelect
@@ -9,10 +38,23 @@ const Header = () => {
         variant="dark" 
         expand="false" 
         bsPrefix='navbar'>
-        <Navbar.Brand className='quick'>Room Hunt 
-<p className="font quick" style={{display:'inline', marginLeft:'5%'}}>Mamburao</p>
+        <Navbar.Brand> 
 
-      </Navbar.Brand>
+    {user?.result ? (
+        <div className='inline'>
+            <p className="quick inline">{user?.result.name}</p>
+            <Button onClick={logout} 
+            variant='dark'
+            ><p className="hlink">Logout</p></Button>
+            </div>
+    ) : (
+        <div className='inline'>
+            <p className="quick inline">Room Hunt</p>
+            <Link to="/register" className='hlink'>Sign In</Link>
+        </div>
+    )}
+
+    </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav"/>
       
     <Navbar.Collapse id="basic-navbar-nav">
