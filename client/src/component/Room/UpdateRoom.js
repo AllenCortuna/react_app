@@ -4,38 +4,39 @@
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react'
 import {Form,Button} from 'react-bootstrap'
-import {createRoom,updateRoom,getRooms} from '../../actions/rooms'
+import {createRoom,updateRoom} from '../../actions/rooms'
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
-
     const [roomData, setRoomData] = useState({
-        name: '', 
-        price: '',  
-        category:'',
-        roomStatus:false});
+            name: '', 
+            price: '', 
+            category:'',
+            roomStatus:false,
+            updatedAt: new Date()
+    });
 
-    const room = useSelector((state) => (currentId ? state.rooms.find((price) => price._id === currentId) : null));
+    const room = useSelector((state) => (currentId ? state.rooms.find((name) => name._id === currentId) : null));
    
     const dispatch = useDispatch();
 
     useEffect(() => {
         if (room) setRoomData(room);
-        getRooms()
-    }, [room]);
+    }, [room,currentId]);
 
     const clear = () => {
-    setCurrentId(0);
+        setCurrentId(0);
         setRoomData({   name: '', 
                         price: '', 
                         category: '', 
-                        roomStatus:false});
+                        roomStatus:false,
+                        updatedAt: new Date()
+        });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (currentId === 0){
             dispatch(createRoom(roomData));
-            dispatch(getRooms)
             clear();
         } else {
             dispatch(updateRoom(currentId,roomData));
@@ -44,8 +45,9 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     };
 
     const toggleCheck = () => {
-        roomData.roomStatus ? setRoomData({...roomData, roomStatus: false}) : setRoomData({...roomData, roomStatus: true})
-    }
+        roomData.roomStatus ? setRoomData({...roomData, roomStatus: false}) : setRoomData({...roomData, roomStatus: true})}
+
+
 
 return <div className="borderline">
         
@@ -53,7 +55,7 @@ return <div className="borderline">
     <Form.Group className="mb-3" 
     controlId="formBasicEmail">
       
-    <Form.Label className='quick'>{currentId ? `Updating Room ${room.name}` : "Create a room "}</Form.Label>
+    <Form.Label className='quick'>{currentId ? `Updating ${room.name}` : "Create a room "}</Form.Label>
     <Form.Control type="text" 
     maxLength="20"
     placeholder="Enter Room Name/No." 
@@ -61,7 +63,7 @@ return <div className="borderline">
     onChange={(e) => 
             setRoomData({ ...roomData, name: e.target.value })} />
 
-    <Form.Control type="text" 
+    <Form.Control type="number" 
     maxLength="10"
     placeholder="Enter Price" 
     value={roomData.price}

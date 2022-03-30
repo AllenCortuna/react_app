@@ -5,7 +5,6 @@ import * as api from '../api/index.js';
 export const getRooms = () => async (dispatch) => {
   try {
     const { data } = await api.fetchRooms();
-        console.log("room acquired ");
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
         console.log(error);
@@ -15,8 +14,8 @@ export const getRooms = () => async (dispatch) => {
 export const createRoom = (room) => async (dispatch) => {
   try {
     const { data } = await api.createRoom(room);
+    console.log('room id: ',room._id);
     dispatch({ type: CREATE, payload: data });
-    console.log("room uploaded");
   } catch (error) {
     console.log(error.message );
   }
@@ -25,7 +24,6 @@ export const createRoom = (room) => async (dispatch) => {
 export const updateRoom = (id, room) => async (dispatch) => {
   try {
     const { data } = await api.updateRoom(id, room);
-    console.log(room.category);
     dispatch({ type: UPDATE, payload: data });
   } catch (error) {
     console.log(error.message);

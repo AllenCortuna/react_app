@@ -2,14 +2,24 @@
 
 
 import Room from './Room'
-import { useSelector } from 'react-redux';
+import {useSelector,useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { getRooms } from '../../actions/rooms';
 
-const Rooms = ({setCurrentId}) => {
+
+const Rooms = ({currentId,setCurrentId}) => {
 
     const rooms = useSelector((state) => state.rooms);
 
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getRooms());
+    },[rooms.length,dispatch])
+
     return (       
-         !rooms.length ? <p>Loading ...</p> : 
+        !rooms.length ? 
+        <p className='quick' style={{color:'rgb(245,245,245)'}}>Loading ...</p>  :
         (
             <div className="container">
             {rooms.map((room)=>(
@@ -19,6 +29,7 @@ const Rooms = ({setCurrentId}) => {
                 </div >
             ))}
             </div>
+
         )
     ); 
 };

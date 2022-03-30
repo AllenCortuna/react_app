@@ -30,7 +30,7 @@ background-size: cover;
 }
 .header {
   box-sizing: border-box;
-  box-shadow: 0 2px 2px 0px black;
+  box-shadow: 0 1px 4px 0px black;
   margin-bottom: 4%;
 }
 .header a {
@@ -85,7 +85,7 @@ background-size: cover;
   background-color: #183052;
   margin-bottom: none;
   box-sizing: border-box;
-  box-shadow: 0px 1px 2px 2px grey;
+  box-shadow: 0 2px 4px 2px black;
   color: white;
   width: 100%;
 }
@@ -118,8 +118,8 @@ a:hover {
 .green {
   color: green;
 }
-.red {
-  color: red;
+.grey {
+  color: grey;
 }
 /* TABLE */
 table {
@@ -156,10 +156,14 @@ tr:nth-child(odd) {
   width: 15%;
   margin-right: 5%;
 }
-.roomControl{
-  display: block;
-  position: fixed;
+
+.hlink {
+  border-radius: 10px;
+  color: rgb(242, 242, 242);
+  border: 1px solid grey;
+  display: inline;
+  text-decoration: none;
   float: right;
-  right: 0px;
-  bottom: 5%;
+  font-family: Quicksand,serif;
+  font-weight: 700;
 }

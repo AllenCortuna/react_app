@@ -5,14 +5,14 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import roomRoutes from './routes/rooms.js';
-
+import userRoutes from './routes/user.js';
 const app = express();
 dotenv.config();
 
 app.use(bodyParser.json({ limit: '30mb', extended: true }))
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors());
-
+app.use('/user',userRoutes)
 app.use('/rooms', roomRoutes);
 
 const PORT = process.env.PORT|| 5000;

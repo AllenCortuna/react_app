@@ -5,31 +5,30 @@ import { useDispatch } from 'react-redux';
 import {GrMore} from "react-icons/gr";
 import {FcDeleteColumn} from "react-icons/fc";
 import { deleteRoom } from '../../actions/rooms';
-//import { getRooms } from '../../actions/rooms';
 
 const Room  = ({ room, setCurrentId }) => {
 
     const dispatch = useDispatch();
  
     function downFunction() {
-        console.log("scrollDown");
         window.scrollTo(0, 50000);
         setCurrentId(room._id);
-        console.log(room._id);
   }
-
 
     return <div className="borderline" 
     style={{width:'15rem'}}>
     <table>
+        <thead>
         <tr>
+            <th className="quick">Room No/Name:</th>
             <th style={{fontSize: '14px'}} 
-                className='quick'
-                colSpan='2'>{room.name}</th>
+                className='quick'>{room.name}</th>
         </tr>
+        </thead>
+    <tbody>
         <tr>
             <td className='quick'>Price</td>
-            <td>{room.price}</td>
+            <td><p className="quick inline">Php</p> {room.price}</td>
         </tr>
         <tr>
             <td className='quick'>Category</td>
@@ -37,15 +36,14 @@ const Room  = ({ room, setCurrentId }) => {
         </tr>
         <tr>
             <td className='quick'>Status</td>
-            <td>{room.roomStatus ? "Available" : "Unavailable"}</td>
+            {room.roomStatus ? <td className="quick green">Available</td> : <td className="grey">Unvailable</td> }
         </tr>
         <tr>
             <td className='quick'>Last Update</td>
             <td>{moment(room.updatedAt).fromNow()}</td>
-            {/* <td>{moment(room.updatedAt).format("MMM-DD-YY h:mm")}</td>  */}
         </tr>
+    </tbody>
     </table>
-        <hr/>
 
 {/*CONTROL BUTTON FOR ROOMS*/}
     <div className="grid">

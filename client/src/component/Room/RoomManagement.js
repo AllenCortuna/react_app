@@ -14,17 +14,15 @@ const RoomManagement = () => {
 
     useEffect(() => {
         dispatch(getRooms());
-    },[dispatch]);
-
+    },[currentId,dispatch]);
 
 return  <div className='container' >
 
-        <Rooms setCurrentId={setCurrentId}/>
-        <UpdateRoom currentId={currentId} 
-                    setCurrentId={setCurrentId}/>
-        
-        <br/><br/>
-         
+            <Rooms setCurrentId={setCurrentId} 
+                        currentId={currentId}/>
+            <UpdateRoom currentId={currentId} 
+                        setCurrentId={setCurrentId}/>
+                
         </div>
 
 }

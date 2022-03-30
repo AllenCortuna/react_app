@@ -4,7 +4,7 @@
 import LinkTo from './Link';
 const About = () =>{
 
-    return <div className="container">
+      return <div className="container">
         <div className="borderline">
             <h5 className="quick">
                 About us
@@ -16,7 +16,7 @@ const About = () =>{
 Meet our team 
 
             </p>
-            <LinkTo path={'/'}/>
+            <LinkTo path={'/'} label={'Back'}/>
         </div>
         </div>
 }
