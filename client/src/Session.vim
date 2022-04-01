@@ -12,7 +12,7 @@ argglobal
 %argdel
 edit actions/auth.js
 argglobal
-balt reducers/auth.js
+balt component/Auth/Auth.js
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -23,16 +23,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 12 - ((11 * winheight(0) + 15) / 31)
+let s:l = 1 - ((0 * winheight(0) + 15) / 31)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 12
-normal! 017|
+keepjumps 1
+normal! 0
 tabnext 1
-badd +12 actions/auth.js
-badd +10 reducers/auth.js
-badd +1 reducers/index.js
+badd +1 actions/auth.js
+badd +39 component/Auth/Auth.js
+badd +1 api/index.js
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif

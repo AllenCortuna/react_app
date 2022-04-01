@@ -41,6 +41,7 @@ background-size: cover;
   display: inline;
   text-decoration: none;
   margin-top: 1%;
+  cursor: pointer;
 }
 .navbar {
   margin-top: 0;
@@ -156,14 +157,8 @@ tr:nth-child(odd) {
   width: 15%;
   margin-right: 5%;
 }
-
-.hlink {
-  border-radius: 10px;
-  color: rgb(242, 242, 242);
-  border: 1px solid grey;
-  display: inline;
-  text-decoration: none;
-  float: right;
-  font-family: Quicksand,serif;
-  font-weight: 700;
+.item{
+    display:flex;
+    align-items: center;
+    align-content:center;
 }

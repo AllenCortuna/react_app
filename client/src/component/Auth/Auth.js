@@ -19,6 +19,7 @@ const SignUp = () => {
     const [isSignup,setIsSignup] = useState(false);
 
     const dispatch = useDispatch();
+
     const history = useNavigate();
 
     const clear = () => {
@@ -33,18 +34,6 @@ const SignUp = () => {
     const changeMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
     };
-//GOOGLE
-    const googleSuccess = async (res) => {
-        const result = res.profileObj;
-        const token = res.tokeId;
-        try {
-            dispatch({ type: AUTH, data : {result, token }});
-            history('/');//push
-        } catch (error) {
-            console.log(error);
-}
-    }
-    const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
 // HANDLE SUBMIT
     const handleSubmit = (e) => {
@@ -55,6 +44,18 @@ const SignUp = () => {
             dispatch(signin(form,history));
         } 
     }
+    //GOOGLE
+    const googleSuccess = async (res) => {
+        const result = res?.profileObj;
+        const token = res?.tokenId;
+        try {
+            dispatch({ type: AUTH, data : {result, token }});
+            history('/roomManagement');//push
+        } catch (error) {
+            console.log(error);
+}
+    }
+    const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
 
     return <div className="container">
         <div className="borderline">
@@ -91,21 +92,24 @@ const SignUp = () => {
     onChange = {(e) => 
             setForm({ ...form, confirmPassword: e.target.value })} />}
 
-    <Button variant="primary" 
+    <Button  style={{backgroundColor: '#41323b',margin:'1%'}}
     type="submit" 
     onClick={handleSubmit}>
-    {isSignup ? 'Sign Up' : 'Sign In'}
+    <p className="quick inline">
+        {isSignup ? 'Sign Up' : 'Sign In'}
+    </p>
     </Button>
+  
 
-   <GoogleLogin
+    <GoogleLogin
     clientId="228143511095-5grssm02791fvrtbrvh67pl7kr2ntgob.apps.googleusercontent.com"
     render={(renderProps) => (
-        <Button  color="primary"
-        onClick={renderProps.onClick}>
-        
-    Google Sign In
-    </Button>
-            )}
+    <Button  style={{backgroundColor: '#41323b', margin:'1%'}}
+    onClick={renderProps.onClick}>
+    <p className="quick inline">
+    Google 
+    </p>
+    </Button>)}
             onSuccess={googleSuccess}
             onFailure={googleError}
             cookiePolicy="single_host_origin"/>

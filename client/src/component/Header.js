@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import decode from 'jwt-decode';
 import * as actionType from '../constant';
-import {Nav,Navbar,Button} from 'react-bootstrap'
+import {Nav,Navbar} from 'react-bootstrap'
 const Header = () => {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -39,24 +39,26 @@ const Header = () => {
         expand="false" 
         bsPrefix='navbar'>
         <Navbar.Brand> 
-
+{/* BRAND NAME*/}
+    <div>
     {user?.result ? (
-        <div className='inline'>
-            <p className="quick inline">{user?.result.name}</p>
-            <Button onClick={logout} 
-            variant='dark'
-            ><p className="hlink">Logout</p></Button>
-            </div>
+  <p className="quick inline">{user?.result.hotelName}</p>
     ) : (
-        <div className='inline'>
-            <p className="quick inline">Room Hunt</p>
-            <Link to="/register" className='hlink'>Sign In</Link>
-        </div>
+            <p className="quick inline">Room Hunt </p>
     )}
-
+    </div>
     </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav"/>
-      
+    <div className='item'>
+   {user?.result ? (
+        <Link to='/register' onClick={logout} className="quick">Logout</Link>
+    ) : (
+        <Link to="/register" className='quick'>LogIn</Link>
+    )}
+    <Navbar.Toggle aria-controls="basic-navbar-nav" style={{marginLeft:'4%'}}/>
+    </div>
+
+
+
     <Navbar.Collapse id="basic-navbar-nav">
         <br/>
       <Nav className="me-auto">
