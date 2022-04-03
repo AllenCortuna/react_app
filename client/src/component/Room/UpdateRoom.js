@@ -8,12 +8,14 @@ import {createRoom,updateRoom} from '../../actions/rooms'
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
     const [roomData, setRoomData] = useState({
+            hotelName: '',
             name: '', 
             price: '', 
             category:'',
             roomStatus:false,
             updatedAt: new Date()
     });
+    const user = JSON.parse(localStorage.getItem('profile'));
 
     const room = useSelector((state) => (currentId ? state.rooms.find((name) => name._id === currentId) : null));
    
@@ -25,7 +27,9 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
 
     const clear = () => {
         setCurrentId(0);
-        setRoomData({   name: '', 
+        setRoomData({   
+                        hotelName: '',
+                        name: '', 
                         price: '', 
                         category: '', 
                         roomStatus:false,
@@ -36,10 +40,10 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (currentId === 0){
-            dispatch(createRoom(roomData));
+            dispatch(createRoom({...roomData, hotelName: user?.result?.hotelName}));
             clear();
         } else {
-            dispatch(updateRoom(currentId,roomData));
+            dispatch(updateRoom(currentId,{...roomData, name: user?.result?.name}));
             clear();
         }
     };

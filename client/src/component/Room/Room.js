@@ -15,6 +15,8 @@ const Room  = ({ room, setCurrentId }) => {
         setCurrentId(room._id);
   }
 
+    const user = JSON.parse(localStorage.getItem('profile'));
+
     return <div className="borderline" 
     style={{width:'15rem'}}>
     <table>
@@ -47,15 +49,20 @@ const Room  = ({ room, setCurrentId }) => {
 
 {/*CONTROL BUTTON FOR ROOMS*/}
     <div className="grid">
+        {(user?.result?.googleId === room?.creator || user?.result?._id === room?.creator) && (
       <Button variant="none"
       onClick={downFunction}> 
        <GrMore/> 
       </Button>
-           
-      <Button variant="none" 
-      onClick={ ()=> dispatch(deleteRoom(room._id))}>
-      <FcDeleteColumn/>
-      </Button>
+        )}
+
+        {(user?.result?.googleId === room?.creator || user?.result?._id === room?.creator) && (
+        <Button variant='none' onClick={() => dispatch(deleteRoom(room._id))}>
+        <FcDeleteColumn/>
+        </Button>
+        )}
+
+
     </div>   
 
 </div>

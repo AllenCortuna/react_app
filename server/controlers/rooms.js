@@ -27,9 +27,10 @@ export const getRoom = async (req, res) => {
 
 export const createRoom = async (req, res) => {
 
-    const {name,price,category,roomStatus} = req.body;
+    const room = req.body;
 
-    const newRoomPost = new RoomPost({name,price,category,roomStatus});
+    const newRoomPost = new RoomPost({ ...room, creator: req.userId, createdAt: new Date().toISOString() })
+
     try {
         await newRoomPost.save();
         res.status(201).json(RoomPost);

@@ -2,7 +2,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 import UserModal from '../models/user.js';
-const secret = ' test';
+const secret = 'test';
 
 
 export const signin = async (req, res ) => {
@@ -16,8 +16,8 @@ export const signin = async (req, res ) => {
 
         if (!isPasswordCorrect) return res.status(404).json({message: 'Invalid password'});
  
-        const token = jwt.sign({email: oldUser.email},secret,{expiresIn: '1w'});
-
+        const token = jwt.sign({email: oldUser.email, id: oldUser._id},secret,{expiresIn: '1h'});
+        console.log("login ok");
         res.status(200).json({result: oldUser,token});
     } catch (err) {
         res.status(500).json({message: 'Something went wrong '});
@@ -28,15 +28,14 @@ export const signin = async (req, res ) => {
 export const signup = async (req, res) => {
     const {email, password, hotelName} = req.body;
 
-console.log('signup OK');
     try {
         const oldUser =  await UserModal.findOne({email});
-        if (oldUser)  return res.status(404).json({message: 'User already exist'});
+        if (oldUser)  return res.status(400).json({message: 'User already exist'});
 
         const hashedPassword = await bcrypt.hash(password, 12);
         const result = await UserModal.create({email,password: hashedPassword, hotelName});
 
-        const token = jwt.sign({email: result.email,id : result._id },secret, {expiresIn: '1w'})
+        const token = jwt.sign({email: result.email,id : result._id },secret, {expiresIn: '1h'})
         res.status(201).json({result,token});
     } catch (error) {
         res.status(500).json({message: 'Something went wrong '});

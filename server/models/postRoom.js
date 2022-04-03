@@ -1,8 +1,10 @@
 import mongoose from 'mongoose';
 
 const roomSchema = mongoose.Schema({
+    hotelName: String,
     name: String,
     price: String,
+    creator: String,
     category: String,
     roomStatus: {
         type: Boolean,

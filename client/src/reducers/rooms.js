@@ -2,7 +2,7 @@
 
 
 import { FETCH_ALL, CREATE, UPDATE, DELETE,} from '../constant';
-
+// eslint-disable-next-line
 export default (rooms = [], action) => {
   switch (action.type) {
     case FETCH_ALL:
