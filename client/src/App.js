@@ -7,7 +7,7 @@ import Header  from './component/Header';
 import Footer  from './component/Footer';
 import About from './component/About';
 import NotFound from './component/NotFound';
-import Location from './component/Location'
+import Location from './component/Location/Location'
 import RoomManagement from './component/Room/RoomManagement'
 import SignUp from './component/Auth/Auth'
 const App  = () => {

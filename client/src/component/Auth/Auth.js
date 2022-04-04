@@ -45,7 +45,7 @@ const SignUp = () => {
         } 
     }
     //GOOGLE
-    const googleSuccess = async (res) => {
+        /*  const googleSuccess = async (res) => {
         const result = res?.profileObj;
         const token = res?.tokenId;
         try {
@@ -53,10 +53,10 @@ const SignUp = () => {
             history('/roomManagement');//push
         } catch (error) {
             console.log(error);
-}
+}    
     }
     const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
-
+   */
     return <div className="container">
         <div className="borderline">
         <h2 className="quick">{isSignup ? 'Sign Up' : 'Sign in'}</h2>
@@ -101,7 +101,7 @@ const SignUp = () => {
     </Button>
   
 
-    <GoogleLogin
+    {/*    <GoogleLogin
     clientId="228143511095-5grssm02791fvrtbrvh67pl7kr2ntgob.apps.googleusercontent.com"
     render={(renderProps) => (
     <Button  style={{backgroundColor: '#41323b', margin:'1%'}}
@@ -113,7 +113,7 @@ const SignUp = () => {
             onSuccess={googleSuccess}
             onFailure={googleError}
             cookiePolicy="single_host_origin"/>
-
+            */}
     <hr/>
     
     <Button variant="none" 

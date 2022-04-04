@@ -17,12 +17,13 @@ const Rooms = ({currentId,setCurrentId}) => {
         dispatch(getRooms());
     },[rooms.length,dispatch])
 
+    const user = JSON.parse(localStorage.getItem('profile'));
     return (       
         !rooms.length ? 
         <p className='quick' style={{color:'rgb(245,245,245)'}}>Loading ...</p>  :
         (
             <div className="container">
-            {rooms.map((room)=>(
+                {rooms.filter(room => user?.result?._id === room?.creator).map((room)=>(
                 <div key ={room._id}>
                     <Room room={room}
                      setCurrentId={setCurrentId}/>

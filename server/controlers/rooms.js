@@ -29,12 +29,11 @@ export const createRoom = async (req, res) => {
 
     const room = req.body;
 
-    const newRoomPost = new RoomPost({ ...room, creator: req.userId, createdAt: new Date().toISOString() })
+    const newRoomPost = new RoomPost({ ...room, creator: req.userId, updatedAt: new Date().toISOString() })
 
     try {
         await newRoomPost.save();
         res.status(201).json(RoomPost);
-        console.log("room created");
     } catch (error) {
         console.log(RoomPost);
         res.status(409).json({ message: error.message });
@@ -43,11 +42,11 @@ export const createRoom = async (req, res) => {
 
 export const updateRoom = async (req, res) => {
     const { id } = req.params;
-    const {name,price,category,roomStatus,updatedAt} = req.body;
+    const {name,price,category,roomStatus} = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No room with id: ${id}`);
 
-        const updatedRoom = {name,price,category,roomStatus,updatedAt, _id: id};
+        const updatedRoom = {name,price,category,roomStatus, _id: id, updatedAt: new Date().toISOString()};
 
     await RoomPost.findByIdAndUpdate(id, updatedRoom, { new: true });
 

@@ -1,10 +1,9 @@
 
 
-
 import Rooms from './Rooms';
 import UpdateRoom  from './UpdateRoom';
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import {useSelector, useDispatch } from 'react-redux';
 import { getRooms } from '../../actions/rooms';
 
 const RoomManagement = () => {

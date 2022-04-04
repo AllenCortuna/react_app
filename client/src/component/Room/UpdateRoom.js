@@ -13,7 +13,6 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
             price: '', 
             category:'',
             roomStatus:false,
-            updatedAt: new Date()
     });
     const user = JSON.parse(localStorage.getItem('profile'));
 
@@ -28,12 +27,10 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     const clear = () => {
         setCurrentId(0);
         setRoomData({   
-                        hotelName: '',
                         name: '', 
                         price: '', 
                         category: '', 
                         roomStatus:false,
-                        updatedAt: new Date()
         });
     };
 
@@ -43,7 +40,8 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
             dispatch(createRoom({...roomData, hotelName: user?.result?.hotelName}));
             clear();
         } else {
-            dispatch(updateRoom(currentId,{...roomData, name: user?.result?.name}));
+
+            dispatch(updateRoom(currentId,{...roomData, hotelName: user?.result?.hotelName}));
             clear();
         }
     };

@@ -1,5 +1,15 @@
-import {AUTH} from '../constant';
+
+import {AUTH, FETCH_ALL} from '../constant';
 import * as api from '../api/index';
+
+export const getUsers = () => async (dispatch) => {
+  try {
+    const { data } = await api.fetchUsers();
+    dispatch({ type: FETCH_ALL, payload: data });
+  } catch (error) {
+        console.log(error);
+  }
+};
 
 export const signin = (formData, router) => 
     async (dispatch) => {
