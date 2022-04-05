@@ -4,6 +4,8 @@ import RoomPost from '../models/postRoom.js';
 
 const router = express.Router();
 
+
+
 export const getRooms = async (req, res) => { 
     try {
         const roomPost= await RoomPost.find()

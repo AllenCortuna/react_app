@@ -9,8 +9,8 @@ API.interceptors.request.use((req) => {
   return req;
 });
 
+export const fetchUsers = () => API.get('/user');
 export const fetchRooms = () => API.get('/rooms');
-export const fetchUsers = () => API.get('/users');
 export const createRoom = (newRoom) => API.post('/rooms', newRoom);
 export const updateRoom = (id, updatedRoom) => API.patch(`/rooms/${id}`, updatedRoom);
 export const deleteRoom = (id) => API.delete(`/rooms/${id}`);

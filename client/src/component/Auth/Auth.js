@@ -93,6 +93,7 @@ const SignUp = () => {
             setForm({ ...form, confirmPassword: e.target.value })} />}
 
     <Button  style={{backgroundColor: '#41323b',margin:'1%'}}
+    variant='dark'
     type="submit" 
     onClick={handleSubmit}>
     <p className="quick inline">

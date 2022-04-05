@@ -15,7 +15,7 @@ const Rooms = ({currentId,setCurrentId}) => {
 
     useEffect(() => {
         dispatch(getRooms());
-    },[rooms.length,dispatch])
+    },[currentId,dispatch,rooms.length])
 
     const user = JSON.parse(localStorage.getItem('profile'));
     return (       

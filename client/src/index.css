@@ -12,8 +12,15 @@ body{
 background-attachment: fixed;
 background-size: cover;
 }
+.background{
+    background-color: #1A2B33;
+}
 .font {
   font-size: 12px;
+}
+.poppin{
+  font-family: Poppins,serif;
+  font-weight: 900;
 }
 .quick {
   font-family: Quicksand,serif;
@@ -31,17 +38,22 @@ background-size: cover;
 .header {
   box-sizing: border-box;
   box-shadow: 0 1px 4px 0px black;
-  margin-bottom: 4%;
 }
 .header a {
   color: rgb(242, 242, 242);
-  border: 1px solid grey;
-  border-radius: 4px;
-  padding: 2px;
   display: inline;
   text-decoration: none;
   margin-top: 1%;
   cursor: pointer;
+  font-family: Quicksand,serif;
+  font-weight: 700;
+}
+a:focus,
+a:hover,
+a:visited {
+  background: transparent!important;
+  text-decoration: none !important;
+  color:rgb(242, 242, 242);
 }
 .navbar {
   margin-top: 0;
@@ -77,44 +89,47 @@ background-size: cover;
   color: rgb(242, 242, 242);
   background-color: #41323b;
 }
+.hlink{
+    border: 1px solid rgb(242, 242, 242);
+    border-radius: 15px;
+    padding: 2px 10px;
+}
 /* FOOTER */
 .footer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 3% 0;
-  background-color: #183052;
+  padding: 1rem 0;
   margin-bottom: none;
   box-sizing: border-box;
-  box-shadow: 0 2px 4px 2px black;
   color: white;
   width: 100%;
 }
+.footer a{
+    background: transparent!important;
+    text-decoration: none !important;
+    color:rgb(242, 242, 242);
+}
 .grid a {
   color: rgb(242, 242, 242);
-  border: 1px solid grey;
-  border-radius: 4px;
   padding: 2px;
   display: inline;
   text-decoration: none;
   cursor: pointer;
+  font-family: Quicksand,serif;
+  font-weight: 700;
 }
 .grid {
   display: grid;
   grid-template-columns: 50% 50%;
 }
-.footer .grid li {
+.footer .grid li,ul {
   list-style-type: none;
-  margin-top: 4%;
+  margin-top: 3%;
 }
 .center {
   align-self: center;
-}
-
-a:hover {
-  color: black;
-  background-color: white;
-  text-decoration: none;
+  justify-self: center;
 }
 .green {
   color: green;
@@ -161,4 +176,11 @@ tr:nth-child(odd) {
     display:flex;
     align-items: center;
     align-content:center;
+}
+@media only screen (min-width: 768px){
+    .container{
+        padding:3%;
+    }
+
+
 }

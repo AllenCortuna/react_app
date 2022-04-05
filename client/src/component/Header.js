@@ -20,40 +20,29 @@ const Header = () => {
     };
 
     useEffect(() => {
-        const token = user?.token;
-
+    const token = user?.token;
     if (token) {
         const decodedToken = decode(token);
-
     if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
-
     setUser(JSON.parse(localStorage.getItem('profile')));
   }, [location]);
 
-    return <div className='header' >
+    return <div className='header background' >
         <Navbar 
         collapseOnSelect
-        bg="dark" 
+        bg="none" 
         variant="dark" 
         expand="false" 
         bsPrefix='navbar'>
         <Navbar.Brand> 
 {/* BRAND NAME*/}
-    <div>
-    {user?.result ? (
-  <p className="quick inline">{user?.result.hotelName}</p>
-    ) : (
-            <p className="quick inline">Room Hunt </p>
-    )}
-    </div>
+        <Link to = '/'>
+            <p className="poppin inline ">Room Hunt </p></Link>   
+    
     </Navbar.Brand>
     <div className='item'>
-   {user?.result ? (
-        <Link to='/register' onClick={logout} className="quick">Logout</Link>
-    ) : (
-        <Link to="/register" className='quick'>LogIn</Link>
-    )}
+
     <Navbar.Toggle aria-controls="basic-navbar-nav" style={{marginLeft:'4%'}}/>
     </div>
 
@@ -62,10 +51,16 @@ const Header = () => {
     <Navbar.Collapse id="basic-navbar-nav">
         <br/>
       <Nav className="me-auto">
-          <Link to='/'>Home</Link>
-          <Link to='/roomManagement'>Room Management</Link>
-          <Link to='/availableRooms'>Available Rooms</Link>
-          <Link to='/register'>Register</Link>
+          <Link to='/' className='hlink center'>Home</Link>
+          <Link to='/roomManagement' className='hlink center'>Room Management</Link>
+          <Link to='/availableRooms' className='hlink center'>Available Rooms</Link>
+          <Link to='/register' className='hlink center'>Register</Link>
+
+   {user?.result ? (
+        <Link to='/' className='hlink center' onClick={logout}>Logout</Link>
+    ) : (
+        <Link to="/register" className='hlink center'>Log In</Link>
+    )}
       </Nav>
     </Navbar.Collapse>
 </Navbar>

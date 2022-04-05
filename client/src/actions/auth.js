@@ -1,11 +1,12 @@
 
-import {AUTH, FETCH_ALL} from '../constant';
+import {AUTH, FETCH_DATA} from '../constant';
 import * as api from '../api/index';
 
 export const getUsers = () => async (dispatch) => {
   try {
-    const { data } = await api.fetchUsers();
-    dispatch({ type: FETCH_ALL, payload: data });
+      const { data } = await api.fetchUsers();
+      dispatch({ type: FETCH_DATA, payload: data });
+      console.log('data: ',data);
   } catch (error) {
         console.log(error);
   }
@@ -29,10 +30,8 @@ export const signup = (formData, router) =>
         try {
             const {data} = await api.signUp(formData);
             dispatch({type:AUTH, data});
-            console.log("signup complete");
             router('/roomManagement')
         } catch (error) {
-            console.log("incomplete signup  /actions/auth");
             console.log(error.message);
         }
     }

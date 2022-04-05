@@ -1,27 +1,26 @@
-
 //import header from '../img/header.png';
 //<img src={header} alt="" className='img'/>
+import { getUsers} from '../../actions/auth';
 import Accordion from 'react-bootstrap/Accordion';
 import dorm from '../img/dorm.png';
 import React, {useEffect, } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
-import { getUsers,getRooms } from '../../actions/rooms';
+import { getRooms } from '../../actions/rooms';
 import Rooms from './Rooms'
+    //filter((value, index, self) =>index === self.findIndex((room) => (room.hotelName === value.hotelName )))
 
 const Location = () => {
-
     const dispatch = useDispatch();
-    const rooms = useSelector((state) => state.rooms);
 
     useEffect(() => {
-        dispatch(getRooms());
-    },[dispatch]);
+       dispatch(getUsers());
+    },[dispatch,]);
 
+    const users = useSelector((state) => state.data);
 
     return <div className="container">
     
-        {rooms.filter((value, index, self) =>
-            index === self.findIndex((room) => (room.hotelName === value.hotelName ))).map((a)=>(
+        {users.map((a)=>(
         <Accordion style={ { width: '100%' }}>
         <Accordion.Item eventKey="0">
         
