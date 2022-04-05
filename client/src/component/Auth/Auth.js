@@ -6,14 +6,16 @@ import { signin,signup } from '../../actions/auth';
 import { AUTH } from '../../constant';
 import { Form,Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
-
+import FileBase from 'react-file-base64';
 const SignUp = () => {
 
     const [form,setForm] = useState({
         hotelName: '',
+        location: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        image: ''
     }
     );
     const [isSignup,setIsSignup] = useState(false);
@@ -25,9 +27,12 @@ const SignUp = () => {
     const clear = () => {
          setForm({
             hotelName: '',
+            location: '',
             email: '',
             password: '',
-            confirmPassword: ''
+            confirmPassword: '',
+            image: ''
+
         });
     };
 
@@ -40,6 +45,7 @@ const SignUp = () => {
         e.preventDefault();
         if(isSignup) {
             dispatch(signup(form,history));
+            console.log(form.location,form.image);
         }else{
             dispatch(signin(form,history));
         } 
@@ -70,6 +76,13 @@ const SignUp = () => {
             setForm({ ...form, hotelName: e.target.value })} />    
     }
 
+    {isSignup &&
+    <Form.Control type="text" 
+    placeholder="Enter Address" 
+    value = {form.location}
+    onChange = {(e) => 
+            setForm({ ...form, location: e.target.value })} />}
+
     <Form.Control type="email" 
     placeholder="email" 
     required
@@ -91,6 +104,11 @@ const SignUp = () => {
     value = {form.confirmPassword}
     onChange = {(e) => 
             setForm({ ...form, confirmPassword: e.target.value })} />}
+
+
+    {isSignup &&
+    <div className=''><FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, image: base64 })} /></div>
+    }
 
     <Button  style={{backgroundColor: '#41323b',margin:'1%'}}
     variant='dark'
@@ -120,7 +138,8 @@ const SignUp = () => {
     <Button variant="none" 
     type="submit" 
     onClick={changeMode}>
-    {isSignup ? 'Already have an account? sign in' : 'Dont have an account? sign up'}</Button> 
+    {isSignup ? 
+        'Already have an account? sign in' : 'Dont have an account? sign up'}</Button> 
 
         </div>
 

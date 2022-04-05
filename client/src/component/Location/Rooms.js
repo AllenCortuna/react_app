@@ -19,7 +19,7 @@ const Rooms = ({hotelName}) => {
         {rooms.filter(room => room.hotelName === hotelName).map((room) => (
             <tr>
             <td>{room.name}</td>
-            <td>{room.price}</td>
+            <td><p className="inline">&#8369; &nbsp;</p>{room.price}</td>
             {room.roomStatus ? <td className="quick green">Available</td> : <td className="grey">Unvailable</td> }
             <td>{moment(room.updatedAt).fromNow()}</td>
             </tr>
