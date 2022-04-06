@@ -22,6 +22,7 @@ export const signin = (formData, router) =>
         } catch (error) {
             console.log('incomplete /actions/auth');
             console.log(error);
+            alert(error);
         }
     }
 
@@ -32,6 +33,7 @@ export const signup = (formData, router) =>
             dispatch({type:AUTH, data});
             router('/roomManagement')
         } catch (error) {
-            console.log(error.message);
+            console.log(error);
+            alert(error);
         }
     }

@@ -17,7 +17,6 @@ const Location = () => {
     },[dispatch,]);
 
     const users = useSelector((state) => state.data);
-    const rooms = useSelector((state) => state.rooms);
     return <div className="container">
     
         <img src={header} alt="" className='img'/>
@@ -27,8 +26,8 @@ const Location = () => {
         <Accordion.Item eventKey="0">
         
         <Accordion.Header>
-       <p className="quick">{a.hotelName}<br/>
-                <p className="font grey">{a.location}</p></p>
+       <p className="quick">{a.hotelName}<br className='inline'/>
+                <p className="font grey inline">{a.location}</p></p>
         </Accordion.Header>
 
         <Accordion.Body>
@@ -51,7 +50,7 @@ const Location = () => {
 
         </Accordion.Body>
     </Accordion.Item>
-        </Accordion> )) }
+    </Accordion> )) }
 
         </div>
 }

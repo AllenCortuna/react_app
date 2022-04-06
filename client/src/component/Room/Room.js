@@ -9,11 +9,13 @@ import { deleteRoom } from '../../actions/rooms';
 const Room  = ({ room, setCurrentId }) => {
 
     const dispatch = useDispatch();
- 
+
     function downFunction() {
-        window.scrollTo(0, 50000);
         setCurrentId(room._id);
-  }
+
+        const section = document.querySelector( '#updateRoom' );
+        section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+    }
 
     const user = JSON.parse(localStorage.getItem('profile'));
 

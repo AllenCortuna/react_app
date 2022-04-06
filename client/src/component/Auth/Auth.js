@@ -1,5 +1,5 @@
 
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import { signin,signup } from '../../actions/auth';
@@ -7,7 +7,13 @@ import { AUTH } from '../../constant';
 import { Form,Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
+import logout from '../img/logout.png';
 const SignUp = () => {
+    const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
+
+    useEffect(() => {
+        setUser(JSON.parse(localStorage.getItem('profile')));
+  }, [user]);
 
     const [form,setForm] = useState({
         hotelName: '',
@@ -64,8 +70,15 @@ const SignUp = () => {
     const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
    */
     return <div className="container">
+        {/*logout first before log in and signup*/}
+        {user?.result ? 
         <div className="borderline">
-        <h2 className="quick">{isSignup ? 'Sign Up' : 'Sign in'}</h2>
+            <img src={logout} alt="logout png"  className='block center'/>
+            <h4 className="center">Log out pls..</h4> <hr/> <p className='center'>Log out first, before logging in or signing up.</p> <br/> <p className="quick center">Thank you</p>
+
+        </div> :
+        <div className="borderline">
+        <h2 className="quick center">{isSignup ? 'Sign Up' : 'Sign in'}</h2>
 
     {isSignup &&
     <Form.Control type="text" 
@@ -107,7 +120,8 @@ const SignUp = () => {
 
 
     {isSignup &&
-    <div className=''><FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, image: base64 })} /></div>
+            <div className='quick'><p> &nbsp;Location Image</p>
+            <FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, image: base64 })} />  </div>
     }
 
     <Button  style={{backgroundColor: '#41323b',margin:'1%'}}
@@ -142,7 +156,7 @@ const SignUp = () => {
         'Already have an account? sign in' : 'Dont have an account? sign up'}</Button> 
 
         </div>
-
+        }
     </div>
 }
 

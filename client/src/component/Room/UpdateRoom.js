@@ -7,6 +7,9 @@ import {Form,Button} from 'react-bootstrap'
 import {createRoom,updateRoom} from '../../actions/rooms'
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
+
+
+
     const [roomData, setRoomData] = useState({
             hotelName: '',
             name: '', 
@@ -51,7 +54,7 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
 
 
 
-return <div className="borderline">
+return <div className="borderline" id='updateRoom'>
         
 <Form>   
     <Form.Group className="mb-3" 
