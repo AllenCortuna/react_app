@@ -20,9 +20,8 @@ export const signin = (formData, router) =>
             router('/roomManagement')
             console.log('signin complete');
         } catch (error) {
-            console.log('incomplete /actions/auth');
             console.log(error);
-            alert(error);
+            alert(error,'Incorrect Password or make sure that your account is register. if not register below');
         }
     }
 
@@ -34,6 +33,6 @@ export const signup = (formData, router) =>
             router('/roomManagement')
         } catch (error) {
             console.log(error);
-            alert(error);
+            alert(error, 'Make sure your account is not already register.please complte the information needed including the picture');
         }
     }
