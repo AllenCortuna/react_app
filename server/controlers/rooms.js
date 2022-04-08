@@ -35,7 +35,7 @@ export const createRoom = async (req, res) => {
 
     try {
         await newRoomPost.save();
-        res.status(201).json(RoomPost);
+        res.status(201).json(newRoomPost);
     } catch (error) {
         console.log(RoomPost);
         res.status(409).json({ message: error.message });
@@ -44,7 +44,7 @@ export const createRoom = async (req, res) => {
 
 export const updateRoom = async (req, res) => {
     const { id } = req.params;
-    const {name,price,category,roomStatus} = req.body;
+    const {name,price,category,roomStatus,image} = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No room with id: ${id}`);
 

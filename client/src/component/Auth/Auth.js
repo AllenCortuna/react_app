@@ -21,6 +21,7 @@ const SignUp = () => {
         email: '',
         password: '',
         confirmPassword: '',
+        contact: '',
         image: ''
     }
     );
@@ -37,6 +38,7 @@ const SignUp = () => {
             email: '',
             password: '',
             confirmPassword: '',
+            contact: '',
             image: ''
 
         });
@@ -51,24 +53,12 @@ const SignUp = () => {
         e.preventDefault();
         if(isSignup) {
             dispatch(signup(form,history));
-            console.log(form.location,form.image);
         }else{
             dispatch(signin(form,history));
         } 
     }
-    //GOOGLE
-        /*  const googleSuccess = async (res) => {
-        const result = res?.profileObj;
-        const token = res?.tokenId;
-        try {
-            dispatch({ type: AUTH, data : {result, token }});
-            history('/roomManagement');//push
-        } catch (error) {
-            console.log(error);
-}    
-    }
-    const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
-   */
+
+
     return <div className="container">
         {/*logout first before log in and signup*/}
         {user?.result ? 
@@ -118,10 +108,19 @@ const SignUp = () => {
     onChange = {(e) => 
             setForm({ ...form, confirmPassword: e.target.value })} />}
 
+   {isSignup &&
+    <Form.Control type="number" 
+    maxLength="11"
+    required
+    placeholder="Contact number" 
+    value = {form.contact}
+    onChange = {(e) => 
+            setForm({ ...form, contact: e.target.value })} />}
+
 
     {isSignup &&
-            <div className='quick'><p> &nbsp;Location Image</p>
-            <FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, image: base64 })} />  </div>
+            <div className='quick'>
+            <FileBase type="file" multiple={false} onDone={({ base64 }) => setForm({ ...form, image: base64 })} /><p> &nbsp;Location Image</p>  </div>
     }
 
     <Button  style={{backgroundColor: '#41323b',margin:'1%'}}
@@ -133,23 +132,9 @@ const SignUp = () => {
     </p>
     </Button>
   
-
-    {/*    <GoogleLogin
-    clientId="228143511095-5grssm02791fvrtbrvh67pl7kr2ntgob.apps.googleusercontent.com"
-    render={(renderProps) => (
-    <Button  style={{backgroundColor: '#41323b', margin:'1%'}}
-    onClick={renderProps.onClick}>
-    <p className="quick inline">
-    Google 
-    </p>
-    </Button>)}
-            onSuccess={googleSuccess}
-            onFailure={googleError}
-            cookiePolicy="single_host_origin"/>
-            */}
     <hr/>
     
-    <Button variant="none" 
+    <Button variant="dark" style={{backgroundColor: '#41323b'}}
     type="submit" 
     onClick={changeMode}>
     {isSignup ? 

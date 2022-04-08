@@ -17,7 +17,7 @@ export const getUsers = async (req, res) => {
 }
 
 export const signin = async (req, res ) => {
-    const { email, password  } = req.body;
+    const { email, password } = req.body;
 
     try {
         const oldUser = await UserModal.findOne({email});
@@ -37,7 +37,7 @@ export const signin = async (req, res ) => {
 
 
 export const signup = async (req, res) => {
-    const {hotelName, email,location, password,image} = req.body;
+    const {hotelName, email,location, password,contact,image} = req.body;
 
     try {
         const oldUser =  await UserModal.findOne({email});
