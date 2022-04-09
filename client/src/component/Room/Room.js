@@ -3,6 +3,12 @@ import {Button,} from 'react-bootstrap'
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { deleteRoom } from '../../actions/rooms';
+import more from '../img/more.png';
+import cancel from '../img/cancel.png';
+
+//<p className="font red quick">delete</p>
+//<p className="quick font green">update</p> 
+
 
 const Room  = ({ room, setCurrentId }) => {
 
@@ -19,6 +25,7 @@ const Room  = ({ room, setCurrentId }) => {
 
     return <div className="borderline" 
     style={{width:'15rem'}}>
+    <img src={room.image} alt="" className='imgRoom'/>
     <table>
         <thead>
         <tr>
@@ -51,14 +58,14 @@ const Room  = ({ room, setCurrentId }) => {
     <div className="grid">
         {(user?.result?.googleId === room?.creator || user?.result?._id === room?.creator) && (
       <Button variant="none"
-      onClick={downFunction}> 
-       <p className="quick font green">update</p> 
+      onClick={downFunction}>
+      <img src={more} alt="" style={{width:'40%'}}/>
       </Button>
         )}
 
         {(user?.result?.googleId === room?.creator || user?.result?._id === room?.creator) && (
         <Button variant='none' onClick={() => dispatch(deleteRoom(room._id))}>
-        <p className="font red quick">delete</p>
+      <img src={cancel} alt="" style={{width:'40%'}}/>
         </Button>
         )}
     </div>   

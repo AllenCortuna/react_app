@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react'
 import {Form,Button} from 'react-bootstrap'
 import {createRoom,updateRoom} from '../../actions/rooms'
+import FileBase from 'react-file-base64';
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
 
@@ -16,6 +17,7 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
             price: '', 
             category:'',
             roomStatus:false,
+            image: ''
     });
     const user = JSON.parse(localStorage.getItem('profile'));
 
@@ -34,6 +36,7 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
                         price: '', 
                         category: '', 
                         roomStatus:false,
+                        image: ''
         });
     };
 
@@ -89,6 +92,10 @@ return <div className="borderline" id='updateRoom'>
     label="Available"
     checked={roomData.roomStatus}
     onChange={toggleCheck}/>    
+
+    <div className='quick'>
+    <FileBase type="file" multiple={false} onDone={({ base64 }) => setRoomData({ ...roomData, image: base64 })} /><p> &nbsp;Room Image</p>  </div>
+
 
   </Form.Group>
 

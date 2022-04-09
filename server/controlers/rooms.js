@@ -37,7 +37,6 @@ export const createRoom = async (req, res) => {
         await newRoomPost.save();
         res.status(201).json(newRoomPost);
     } catch (error) {
-        console.log(RoomPost);
         res.status(409).json({ message: error.message });
     }
 }
