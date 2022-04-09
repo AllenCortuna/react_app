@@ -2,8 +2,6 @@
 import {Button,} from 'react-bootstrap'
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
-import {GrMore} from "react-icons/gr";
-import {FcDeleteColumn} from "react-icons/fc";
 import { deleteRoom } from '../../actions/rooms';
 
 const Room  = ({ room, setCurrentId }) => {
@@ -54,17 +52,15 @@ const Room  = ({ room, setCurrentId }) => {
         {(user?.result?.googleId === room?.creator || user?.result?._id === room?.creator) && (
       <Button variant="none"
       onClick={downFunction}> 
-       <GrMore/> 
+       <p className="quick font green">update</p> 
       </Button>
         )}
 
         {(user?.result?.googleId === room?.creator || user?.result?._id === room?.creator) && (
         <Button variant='none' onClick={() => dispatch(deleteRoom(room._id))}>
-        <FcDeleteColumn/>
+        <p className="font red quick">delete</p>
         </Button>
         )}
-
-
     </div>   
 
 </div>

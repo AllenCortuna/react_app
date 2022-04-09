@@ -51,15 +51,20 @@ const Header = () => {
     <Navbar.Collapse id="basic-navbar-nav">
         <br/>
       <Nav className="me-auto">
-          <Link to='/' className='hlink center'>Home</Link>
-          <Link to='/roomManagement' className='hlink center'>Room Management</Link>
-          <Link to='/availableRooms' className='hlink center'>Available Rooms</Link>
-          <Link to='/register' className='hlink center'>Register</Link>
+
+          <Link to='/' className=''>Home</Link>
+
+   {user?.result && 
+          <Link to='/roomManagement' className=''>Room Management</Link>}
+
+          <Link to='/availableRooms' className=''>Available Rooms</Link>
+
+          <Link to='/FAQs' className=''>FAQs</Link>
 
    {user?.result ? (
-        <Link to='/' className='hlink center' onClick={logout}>Logout</Link>
+        <Link to='/' className='' onClick={logout}>Logout</Link>
     ) : (
-        <Link to="/register" className='hlink center'>Log In</Link>
+        <Link to="/register" className=''>Log In</Link>
     )}
       </Nav>
     </Navbar.Collapse>

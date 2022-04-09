@@ -1,13 +1,11 @@
 import header from '../img/header.png';
 import { getUsers} from '../../actions/auth';
-import Accordion from 'react-bootstrap/Accordion';
+import {Card,ListGroup,ListGroupItem}from 'react-bootstrap';
 import dorm from '../img/dorm.png';
 import React, {useEffect, } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 import { getRooms } from '../../actions/rooms';
 import Rooms from './Rooms'
-    //filter((value, index, self) =>index === self.findIndex((room) => (room.hotelName === value.hotelName )))
-
 //<img src={dorm} alt="" className='imglogo'/> 
 const Location = () => {
     const dispatch = useDispatch();
@@ -19,21 +17,14 @@ const Location = () => {
     const users = useSelector((state) => state.data);
     return <div className="container">
     
-        <img src={header} alt="" className='img'/>
 
         {users.map((a)=>(
-        <Accordion style={ { width: '100%'}}>
-        <Accordion.Item eventKey="0">
-        
-        <Accordion.Header>
-       <p className="quick">{a.hotelName}<br className='inline'/>
-                <p className="font grey inline">{a.location}</p></p>
-        </Accordion.Header>
 
-        <Accordion.Body>
-            
-        <img src={a.image} alt="" className='img'/>
-        <table>
+   <Card style={{ width: '100%',marginTop: '3%' }}>
+  <Card.Img variant="top" src={a.image} />
+  <Card.Body>
+    <Card.Title className='poppin center'>{a.hotelName}</Card.Title>
+         <table>
             <thead>
                 <tr>
                 <th className="quick">name</th>
@@ -47,10 +38,15 @@ const Location = () => {
             <Rooms hotelName={a.hotelName}/>
             </tbody>
         </table>
+  </Card.Body>
+  <ListGroup className="list-group-flush">
+    <ListGroupItem>{a.location}</ListGroupItem>
+    <ListGroupItem>{a.email}</ListGroupItem>
+    <ListGroupItem>{a.contact}</ListGroupItem>
+  </ListGroup>
+</Card>
 
-        </Accordion.Body>
-    </Accordion.Item>
-    </Accordion> )) }
+        )) }
 
         </div>
 }

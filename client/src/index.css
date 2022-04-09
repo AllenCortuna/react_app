@@ -138,6 +138,9 @@ a:visited {
 .block{
     display:block;
 }
+.red{
+    color: red;
+}
 .green {
   color: green;
 }
