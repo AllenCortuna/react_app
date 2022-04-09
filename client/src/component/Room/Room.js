@@ -1,11 +1,15 @@
 
+
+
 import {Button,} from 'react-bootstrap'
 import moment from 'moment';
 import { useDispatch } from 'react-redux';
 import { deleteRoom } from '../../actions/rooms';
 import more from '../img/more.png';
-import cancel from '../img/cancel.png';
+import cancel from '../img/delete.png';
 
+//<a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Alfredo Hernandez - Flaticon</a>
+//<a href="https://www.flaticon.com/free-icons/more" title="more icons">More icons created by Freepik - Flaticon</a>
 //<p className="font red quick">delete</p>
 //<p className="quick font green">update</p> 
 
@@ -59,13 +63,13 @@ const Room  = ({ room, setCurrentId }) => {
         {(user?.result?.googleId === room?.creator || user?.result?._id === room?.creator) && (
       <Button variant="none"
       onClick={downFunction}>
-      <img src={more} alt="" style={{width:'40%'}}/>
+      <img src={more} alt="" style={{width:'35%'}}/>
       </Button>
         )}
 
         {(user?.result?.googleId === room?.creator || user?.result?._id === room?.creator) && (
         <Button variant='none' onClick={() => dispatch(deleteRoom(room._id))}>
-      <img src={cancel} alt="" style={{width:'40%'}}/>
+      <img src={cancel} alt="" style={{width:'35%'}}/>
         </Button>
         )}
     </div>   

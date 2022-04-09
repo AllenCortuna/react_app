@@ -1,4 +1,7 @@
-import header from '../img/header.png';
+
+
+
+import container from '../img/container.gif';
 import { getUsers} from '../../actions/auth';
 import {Card,ListGroup,ListGroupItem}from 'react-bootstrap';
 import dorm from '../img/dorm.png';
@@ -6,7 +9,9 @@ import React, {useEffect, } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 import { getRooms } from '../../actions/rooms';
 import Rooms from './Rooms'
-//<img src={dorm} alt="" className='imglogo'/> 
+//<a href="https://www.flaticon.com/free-animated-icons/delivery" title="delivery animated icons">Delivery animated icons created by Freepik - Flaticon</a>
+
+
 const Location = () => {
     const dispatch = useDispatch();
 
@@ -16,12 +21,16 @@ const Location = () => {
 
     const users = useSelector((state) => state.data);
     return <div className="container">
-    
 
+        {users.length === 0 && 
+        <div className="borderline">
+            <img src={container} alt="" style={{width: '100%'}}/>
+        </div>
+        }
         {users.map((a)=>(
 
    <Card style={{ width: '100%',marginTop: '3%' }}>
-  <Card.Img variant="top" src={a.image} />
+  <Card.Img variant="top" src={a.image} className='img'/>
   <Card.Body>
     <Card.Title className='poppin center'>{a.hotelName}</Card.Title>
          <table>

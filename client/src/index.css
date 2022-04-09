@@ -175,8 +175,10 @@ tr:nth-child(odd) {
 /* HOTEL GRID DISPLAY */
 .img {
   width: 100%;
-  height: auto;
-  border-radius: 5px 5px 0 0;
+  height: 140px;
+  object-fit:cover;
+  box-shadow: 0 1px 4px 0px black;
+  border-radius: 0 0 5px 5px;
 }
 .imgRoom{
   width: 100%;
@@ -184,8 +186,8 @@ tr:nth-child(odd) {
   object-fit:cover;
 }
 .imglogo {
-  width: 15%;
-  margin-right: 5%;
+  width: 2rem;
+  margin-right: 1rem;
 }
 .item{
     display:flex;

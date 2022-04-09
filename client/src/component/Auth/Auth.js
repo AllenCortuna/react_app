@@ -7,8 +7,11 @@ import { AUTH } from '../../constant';
 import { Form,Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
-import logout from '../img/logout.png';
+
+
+
 const SignUp = () => {
+
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
     useEffect(() => {
@@ -63,7 +66,6 @@ const SignUp = () => {
         {/*logout first before log in and signup*/}
         {user?.result ? 
         <div className="borderline">
-            <img src={logout} alt="logout png"  className='block center'/>
             <h4 className="center">Log out pls..</h4> <hr/> <p className='center'>Log out first, before logging in or signing up.</p> <br/> <p className="quick center">Thank you</p>
 
         </div> :

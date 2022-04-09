@@ -1,6 +1,7 @@
 
 
 
+import container from '../img/container.gif';
 import Room from './Room'
 import {useSelector,useDispatch } from 'react-redux';
 import { useEffect } from 'react';
@@ -20,7 +21,10 @@ const Rooms = ({currentId,setCurrentId}) => {
     const user = JSON.parse(localStorage.getItem('profile'));
     return (       
         !rooms.length ? 
-        <p className='quick' style={{color:'rgb(245,245,245)'}}>Loading ...</p>  :
+    <div className="borderline">
+            <img src={container} alt="" style={{width: '100%'}}/>
+        </div>
+        :
         (
             <div className="container">
                 {rooms.filter(room => user?.result?._id === room?.creator).map((room)=>(

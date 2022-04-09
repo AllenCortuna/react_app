@@ -61,7 +61,8 @@ return <footer className='footer background'>
 
         </div>
         <p className='center font quick grey'>Room Hunt Mamburao 2021-2022</p>
-<p className="center font grey">Room Hunt is  develop by Students of Occidental Mindoro State University as part of Capstone Project to help hotel and dormitory, by informing that their business is available and accepting tenants and customers. The main feature of this web application is to show the number of room in a hotel or dormitory and its status(available or unavailble) if its occupied or not. </p>
+        <p className="center font grey" style={{marginLeft:'2rem', marginRight: '2rem'}}>
+            Room Hunt is  develop by Students of Occidental Mindoro State University as part of Capstone Project to help hotel and dormitory, by informing that their business is available and accepting tenants and customers. The main feature of this web application is to show the number of room in a hotel or dormitory and its status(available or unavailble) if its occupied or not. </p>
         </footer>
 
 };
