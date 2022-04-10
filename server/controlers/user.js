@@ -8,7 +8,7 @@ const secret = 'test';
 
 export const getUsers = async (req, res) => { 
     try {
-        const userModal = await UserModal.find()
+        const userModal = await UserModal.find().sort({_id: -1})
         console.log('getuser ok');
         res.status(200).json(userModal);
     } catch (error) {

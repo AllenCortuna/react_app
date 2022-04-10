@@ -22,17 +22,16 @@ const Location = () => {
     const users = useSelector((state) => state.data);
     return <div className="container">
 
-        {users.length === 0 && 
+        {users?.length === 0 && 
         <div className="borderline">
             <img src={container} alt="" style={{width: '100%'}}/>
         </div>
         }
-        {users.map((a)=>(
+        {users?.map((a)=>(
 
    <Card style={{ width: '100%',marginTop: '3%' }}>
   <Card.Img variant="top" src={a.image} className='img'/>
   <Card.Body>
-    <Card.Title className='poppin center'>{a.hotelName}</Card.Title>
          <table>
             <thead>
                 <tr>
@@ -48,10 +47,9 @@ const Location = () => {
             </tbody>
         </table>
   </Card.Body>
-  <ListGroup className="list-group-flush">
-    <ListGroupItem>{a.location}</ListGroupItem>
-    <ListGroupItem>{a.email}</ListGroupItem>
-    <ListGroupItem>{a.contact}</ListGroupItem>
+  <ListGroup className="list-group">
+      <ListGroupItem className='quick'>{a.hotelName}</ListGroupItem>
+    <ListGroupItem className='font' disabled>{a.location}</ListGroupItem>
   </ListGroup>
 </Card>
 

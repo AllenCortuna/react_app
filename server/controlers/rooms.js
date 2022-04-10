@@ -47,7 +47,7 @@ export const updateRoom = async (req, res) => {
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No room with id: ${id}`);
 
-        const updatedRoom = {name,price,category,roomStatus, _id: id, updatedAt: new Date().toISOString()};
+        const updatedRoom = {name,price,category,roomStatus,image, _id: id, updatedAt: new Date().toISOString()};
 
     await RoomPost.findByIdAndUpdate(id, updatedRoom, { new: true });
 
