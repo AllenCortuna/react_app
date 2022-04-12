@@ -15,6 +15,17 @@ export const getRooms = async (req, res) => {
     }
 }
 
+export const getOwnRooms = async (req, res) => { 
+    const {myid } = req.params;
+
+    try {
+        const roomPost= await RoomPost.find({creator : myid})
+        res.status(200).json(roomPost);
+    } catch (error) {
+        res.status(404).json({ message: error.message });
+    }
+}
+
 export const getRoom = async (req, res) => { 
     const { id } = req.params;
 

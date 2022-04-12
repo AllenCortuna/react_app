@@ -10,6 +10,7 @@ import NotFound from './component/NotFound';
 import Location from './component/Location/Location'
 import RoomManagement from './component/Room/RoomManagement'
 import SignUp from './component/Auth/Auth'
+import HotelDetails from './component/Location/HotelDetails'
 const App  = () => {
 
     return <Router>
@@ -24,10 +25,13 @@ const App  = () => {
             element={<RoomManagement/>} />
 
             <Route path='/about'
-             element={<About />} />
+            element={<About />} />
 
             <Route path='/register'
-             element={<SignUp />} />
+            element={<SignUp />} />
+
+            <Route path='/hotels/:id'
+            element={<HotelDetails/>} />
 
             <Route path='/*'
             element={<NotFound />} />

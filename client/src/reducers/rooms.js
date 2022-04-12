@@ -1,11 +1,13 @@
 
 
 
-import { FETCH_ALL, CREATE, UPDATE, DELETE,} from '../constant';
+import { FETCH_ALL,FETCH_OWN, CREATE, UPDATE, DELETE,} from '../constant';
 // eslint-disable-next-line
 export default (rooms = [], action) => {
   switch (action.type) {
     case FETCH_ALL:
+      return action.payload;
+    case FETCH_OWN:
       return action.payload;
     case CREATE:
       return [...rooms, action.payload];

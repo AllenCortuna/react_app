@@ -6,11 +6,11 @@ export const getUsers = () => async (dispatch) => {
   try {
       const { data } = await api.fetchUsers();
       dispatch({ type: FETCH_DATA, payload: data });
-      console.log('data: ',data);
   } catch (error) {
         console.log(error);
   }
 };
+
 
 export const signin = (formData, router) => 
     async (dispatch) => {

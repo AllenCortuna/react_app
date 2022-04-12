@@ -1,4 +1,4 @@
-import { FETCH_ALL, CREATE, UPDATE, DELETE} from '../constant';
+import { FETCH_ALL, FETCH_OWN,CREATE, UPDATE, DELETE} from '../constant';
 
 import * as api from '../api/index.js';
 
@@ -11,10 +11,18 @@ export const getRooms = () => async (dispatch) => {
   }
 };
  
+export const getOwnRooms = (myid) => async (dispatch) => {
+  try {
+    const { data } = await api.fetchOwnRooms(myid);
+    dispatch({ type: FETCH_OWN, payload: data });
+  } catch (error) {
+        console.log(error);
+  }
+};
+
 export const createRoom = (room) => async (dispatch) => {
   try {
     const { data } = await api.createRoom(room);
-    console.log('room id: ',room._id);
     dispatch({ type: CREATE, payload: data });
   } catch (error) {
     console.log(error.message );

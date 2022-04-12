@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 
-import {getUsers, signin , signup} from '../controlers/user.js';
+import {getUsers,signin , signup} from '../controlers/user.js';
 
 
 router.get('/', getUsers);
