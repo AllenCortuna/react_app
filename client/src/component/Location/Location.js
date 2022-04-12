@@ -23,7 +23,7 @@ const Location = () => {
     },[dispatch,]);
 
     const users = useSelector((state) => state.users);
-console.log('users',users);
+
     return <div className="container">
 
         {users?.length === 0 && 
@@ -32,7 +32,7 @@ console.log('users',users);
             </div>}
 
         {users?.map((user)=>(
-            <Hotel user={user} />
+            <Hotel user={user} key={user._id}/>
         )) }
 
         </div>

@@ -2,23 +2,43 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import moment from 'moment';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getOwnRooms } from '../../actions/rooms';
-//import Room from './Room';
+import { getRooms } from '../../actions/rooms';
+import {Card,ListGroup,ListGroupItem}from 'react-bootstrap';
+import Room from './Room';
 
 const HotelDetails = () => {
     const dispatch = useDispatch();
+
     const { id } = useParams();
+
     const users = useSelector((state) => state.users);
+
     const hotel = users.find(user => user._id === id);
-    console.log('hotel data',hotel);
+
+    const rooms = useSelector((state) => state.rooms);
+
     useEffect(() => {
-       dispatch(getOwnRooms(id));
+       dispatch(getRooms());
     },[dispatch,]); 
     
-    return <div className="borderline">
-        <img src={hotel.image} alt="" className="img"/>
-        <h1>{hotel.hotelName}</h1>
-        <p className="quick">{id}</p>
+    return <div className="container">
+  <Card stye={{width: '100%'}} >
+    <Card.Img variant="top" src={hotel.image} className='img'/>
+  <ListGroup className="list-group">
+    <ListGroupItem className='quick'>{hotel.hotelName}</ListGroupItem>
+    <ListGroupItem className='font' disabled>{hotel.location}</ListGroupItem>
+    <ListGroupItem className='font' disabled>{!hotel.contact && 'No number provided'}{hotel.contact}</ListGroupItem>
+  </ListGroup>
+  <Card.Body>
+                {rooms.filter(room => hotel._id === room?.creator).map((room)=>(
+                <div key ={room._id}>
+                    <Room room={room}/>
+                </div >
+            ))}
+  </Card.Body>
+</Card>
+
+
         </div>
 }
 

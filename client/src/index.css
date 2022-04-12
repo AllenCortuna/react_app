@@ -125,6 +125,11 @@ a:visited {
   display: grid;
   grid-template-columns: 50% 50%;
 }
+.gridRoom{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding: 3px;
+}
 .footer .grid li,ul {
   list-style-type: none;
   margin-top: 3%;
@@ -182,8 +187,10 @@ tr:nth-child(odd) {
 }
 .imgRoom{
   width: 100%;
-  height: 100px;
+  height: 8.8rem;
   object-fit:cover;
+  box-shadow: 0 1px 2.5px 0px black;
+  border-radius: 0 5px;
 }
 .imglogo {
   width: 2rem;
@@ -191,7 +198,7 @@ tr:nth-child(odd) {
 }
 .card{
     width: 20rem;
-    margin: 1.5%;
+    margin-top: 1.5%;
 }
 .item{
     display:flex;
@@ -203,6 +210,9 @@ tr:nth-child(odd) {
         padding: 1.5%;
     }
     .card{
-        width:15rem;
+        width:30rem;
+    }
+    .img{
+        height: 20rem;
     }
 }
