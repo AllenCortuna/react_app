@@ -18,16 +18,20 @@ const Hotel  = ({user}) => {
         dispatch(getRooms());
     },[dispatch,rooms.length])
 
+    const active = rooms?.filter(room => room.creator === user._id).filter(room => room.roomStatus === true).length
 
     return <div key={user._id} onClick={openHotel}>
     <Card className='card' >
     <Card.Img variant="top" src={user.image} className='img'/>
   <Card.Body>
   <ListGroup className="list-group">
+
     <ListGroupItem className='quick'>{user.hotelName}</ListGroupItem>
-    <ListGroupItem className='font quick'><p className='inline'>room available: &nbsp;
-        {!rooms.length && <Spinner animation="border" role="status" size='sm'>  </Spinner>}
-        </p> {rooms?.filter(room => room.creator === user._id).length}</ListGroupItem>
+
+    <ListGroupItem className='font'><p className='inline quick '>room available: &nbsp;
+        {!rooms.length ? <Spinner animation="border" role="status" size='sm'> </Spinner> : <p className='green quick inline'>{active}</p>}
+        </p></ListGroupItem>
+
     <ListGroupItem className='font' disabled>{user.location}</ListGroupItem>
   </ListGroup>
   </Card.Body>
