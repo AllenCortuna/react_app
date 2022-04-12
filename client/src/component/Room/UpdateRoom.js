@@ -26,6 +26,7 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     const dispatch = useDispatch();
 
     useEffect(() => {
+        if (!room?.name) clear();
         if (room) setRoomData(room);
     }, [room,currentId]);
 
