@@ -28,7 +28,7 @@ const Room  = ({ room, setCurrentId }) => {
     const user = JSON.parse(localStorage.getItem('profile'));
 
     return <div className="borderline" 
-    style={{width:'15rem'}}>
+    style={{width:'14rem'}}>
     <img src={room.image} alt="" className='imgRoom'/>
     <table>
         <thead>

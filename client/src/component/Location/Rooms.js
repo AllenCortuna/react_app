@@ -1,20 +1,20 @@
 
-import React, {useEffect, } from 'react';
-import { getRooms } from '../../actions/rooms';
-import { useDispatch, useSelector} from 'react-redux';
+//import React, {useEffect, } from 'react';
+//import { getRooms } from '../../actions/rooms';
+import { useSelector} from 'react-redux';
 import moment from 'moment';
 
 
 
 const Rooms = ({hotelName}) => {
     
-    const dispatch = useDispatch();
+    //const dispatch = useDispatch();
     const rooms = useSelector((state) => state.rooms);
-
+    /*  
     useEffect(() => {
         dispatch(getRooms());
     },[dispatch]);
- 
+ */
     return (<>
         {rooms.filter(room => room.hotelName === hotelName).map((room) => (
             <tr>

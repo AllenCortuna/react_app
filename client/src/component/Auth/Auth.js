@@ -1,9 +1,7 @@
 
 import {useState,useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
 import { signin,signup } from '../../actions/auth';
-import { AUTH } from '../../constant';
 import { Form,Button } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import FileBase from 'react-file-base64';
@@ -49,6 +47,7 @@ const SignUp = () => {
 
     const changeMode = () => {
         setIsSignup((prevIsSignup) => !prevIsSignup);
+        clear();
     };
 
 // HANDLE SUBMIT

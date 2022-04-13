@@ -3,11 +3,9 @@
 
 import container from '../img/container.gif';
 import { getUsers} from '../../actions/auth';
-import dorm from '../img/dorm.png';
 import React, {useEffect, } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 import { getRooms } from '../../actions/rooms';
-import Rooms from './Rooms';
 import Hotel from './Hotel';
 
 
@@ -18,9 +16,11 @@ import Hotel from './Hotel';
 const Location = () => {
     const dispatch = useDispatch();
 
+    const rooms = useSelector((state) => state.rooms);
     useEffect(() => {
        dispatch(getUsers());
-    },[dispatch,]);
+       dispatch(getRooms());
+    },[dispatch,rooms.length]);
 
     const users = useSelector((state) => state.users);
 
