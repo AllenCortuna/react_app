@@ -15,9 +15,8 @@ const Footer = () => {
 
  const logout = () => {
         dispatch({ type: actionType.LOGOUT });
-
+        topFunction()
         history('/register');
-
         setUser(null);
     };
 function topFunction() {
@@ -35,18 +34,20 @@ return <footer className='footer background'>
         <Link to ='/' className="poppin center">
             <h3 className="poppin center">Room Hunt </h3></Link>    )} 
 
-        {user?.result ? (
-        <Link to='/register' className='hlink center quick' onClick={logout}>Logout</Link>
-    ) : (
-        <Link to="/register" className='hlink center quick'>Log In</Link>
-    )}
  <hr/>
         <div className="grid">            
         <div> 
         <ul>
-            <li><Link to='/term&condition' onClick={topFunction}> Term &Conditions</Link></li>
+            <li><Link to='/terms' onClick={topFunction}> Term &Conditions</Link></li>
+
             <li><Link to='/contact' onClick={topFunction}> Contact Us</Link></li>
-            <li><Link to='/questions' onClick={topFunction}>FAQs</Link></li>
+
+            <li>{user?.result ? (
+            <Link to='/register' onClick={logout}>Logout</Link>
+    ) : (
+        <Link to="/register" onClick={topFunction}>Log In</Link>
+    )}
+        </li>
         </ul>
         </div>
 

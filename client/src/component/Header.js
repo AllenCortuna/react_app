@@ -8,14 +8,14 @@ import {Nav,Navbar} from 'react-bootstrap'
 import home from './img/home.png';
 import login from './img/login.png';
 import register  from './img/register.png';
-import qa from './img/qa.png';
 import manage from './img/document.png';
-
-//<a href="https://www.flaticon.com/free-icons/login" title="login icons">Login icons created by Freepik - Flaticon</a>
+import terms from './img/terms-and-conditions.png';
+import mail from './img/mail.png';
 //<a href="https://www.flaticon.com/free-icons/register" title="register icons">Register icons created by Nhor Phai - Flaticon</a>
 //<a href="https://www.flaticon.com/free-icons/register" title="register icons">Register icons created by Linector - Flaticon</a>
 //<a href="https://www.flaticon.com/free-icons/faq" title="faq icons">Faq icons created by Freepik - Flaticon</a>
-//<a href="https://www.flaticon.com/free-icons/home-button" title="home button icons">Home button icons created by Freepik - Flaticon</a>
+//terms
+//<a href="https://www.flaticon.com/free-icons/terms-and-conditions" title="terms and conditions icons">Terms and conditions icons created by monkik - Flaticon</a>
 const Header = () => {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
@@ -73,13 +73,17 @@ const Header = () => {
             <img src={manage} alt="" className='imglogo'/>
             Room Management</Link>}
 
-        <Link to='/availableRooms' className=''>
+        <Link to='/issue' className=''>
             <img src={register} alt="" className='imglogo'/>
-                Available Rooms</Link>
+                Report Issue</Link>
         
-        <Link to='/FAQs' className=''>
-            <img src={qa} alt="" className='imglogo'/>   
-              FAQs</Link>
+        <Link to='/contact' className=''>
+            <img src={mail} alt="" className='imglogo'/>
+                Contact us</Link>
+
+        <Link to='/terms' className=''>
+            <img src={terms} alt="" className='imglogo'/>
+            Terms & Conditions</Link>
 
    {user?.result ? (
        <Link to='/' className='' onClick={logout}>

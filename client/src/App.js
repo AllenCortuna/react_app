@@ -11,11 +11,13 @@ import Location from './component/Location/Location'
 import RoomManagement from './component/Room/RoomManagement'
 import SignUp from './component/Auth/Auth'
 import HotelDetails from './component/Location/HotelDetails'
+import AvailableRooms from './component/AvailableRooms';
+import Terms from './component/Terms';
 const App  = () => {
 
     return <Router>
     <div>
-            <Header />
+       <Header />
     <Routes>
 
             <Route path='/'
@@ -24,11 +26,17 @@ const App  = () => {
             <Route path='/RoomManagement'
             element={<RoomManagement/>} />
 
+            <Route path='/terms'
+            element={<Terms/>} />
+
+            <Route path='/availableRooms'
+            element={<AvailableRooms/>} />
+
             <Route path='/about'
             element={<About />} />
 
             <Route path='/register'
-            element={<SignUp />} />
+              element={<SignUp />} />
 
             <Route path='/hotels/:id'
             element={<HotelDetails/>} />
@@ -37,7 +45,7 @@ const App  = () => {
             element={<NotFound />} />
 
     </Routes>
-             <Footer />
+      <Footer />
     </div>
 
 </Router>
