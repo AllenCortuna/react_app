@@ -192,6 +192,15 @@ tr:nth-child(odd) {
   box-shadow: 0 1px 2.5px 0px black;
   border-radius: 0 5px;
 }
+
+.imgheader {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 0.5rem;
+  border-radius: 1.5rem;
+  object-fit:cover;
+  
+}
 .imglogo {
   width: 2rem;
   margin-right: 1rem;
@@ -216,3 +225,18 @@ tr:nth-child(odd) {
         height: 20rem;
     }
 }
+.fullscreen{
+  background:#181818;
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+  display: flex;
+  align-content:center;
+  align-items:center;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+

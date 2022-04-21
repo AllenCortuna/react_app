@@ -1,6 +1,5 @@
 
 
-import Rooms from './Rooms';
 import UpdateRoom  from './UpdateRoom';
 import React, { useState, useEffect } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
@@ -16,9 +15,10 @@ const RoomManagement = () => {
     },[currentId,dispatch]);
 */}
 return  <div className='container' >
-
+    {/* 
             <Rooms setCurrentId={setCurrentId} 
                         currentId={currentId}/>
+    */}
             <UpdateRoom currentId={currentId} 
                         setCurrentId={setCurrentId}/>
                 

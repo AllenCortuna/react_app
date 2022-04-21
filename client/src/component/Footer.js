@@ -2,43 +2,35 @@ import { Link,useLocation, useNavigate } from 'react-router-dom';
 import React, { useState,useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as actionType from '../constant';
-
+import topFunction from './function/function';
 const Footer = () => {
 
-    const dispatch = useDispatch();
-    const history = useNavigate();
+  const dispatch = useDispatch();
+  const history = useNavigate();
 
-    const location = useLocation();
-    useEffect(() => {
-        setUser(JSON.parse(localStorage.getItem('profile')));
-  }, [location]);
+  const location = useLocation();
+  useEffect(() => {
+    setUser(JSON.parse(localStorage.getItem('profile')));
+}, [location]);
 
- const logout = () => {
-        dispatch({ type: actionType.LOGOUT });
-        topFunction()
-        history('/register');
-        setUser(null);
-    };
-function topFunction() {
-  document.body.scrollTop = 0; // For Safari
-  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-}
+  const logout = () => {
+    dispatch({ type: actionType.LOGOUT });
+    topFunction()
+    history('/register');
+    setUser(null);
+  };
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
 
-return <footer className='footer background'>
-        {user?.result ? ( 
-        <Link to = '/roomManagement' className="poppin center">
-            <h3 className="poppin center">{user?.result.hotelName}</h3>  </Link>
-    ) : (  
-        <Link to ='/' className="poppin center">
-            <h3 className="poppin center">Room Hunt </h3></Link>    )} 
+  return <footer className='footer background'>
+    <Link to ='/' className="poppin center">
+      <h3 className="poppin center">Room Hunt </h3></Link>  
 
  <hr/>
-        <div className="grid">            
+      <div className="grid">            
         <div> 
         <ul>
-            <li><Link to='/terms' onClick={topFunction}> Term &Conditions</Link></li>
+            <li><Link to='/terms' onClick={topFunction}> Term &amp; Conditions</Link></li>
 
             <li><Link to='/contact' onClick={topFunction}> Contact Us</Link></li>
 

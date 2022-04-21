@@ -11,7 +11,7 @@ import Location from './component/Location/Location'
 import RoomManagement from './component/Room/RoomManagement'
 import SignUp from './component/Auth/Auth'
 import HotelDetails from './component/Location/HotelDetails'
-import AvailableRooms from './component/AvailableRooms';
+import Rooms from './component/Room/Rooms';
 import Terms from './component/Terms';
 const App  = () => {
 
@@ -29,8 +29,8 @@ const App  = () => {
             <Route path='/terms'
             element={<Terms/>} />
 
-            <Route path='/availableRooms'
-            element={<AvailableRooms/>} />
+            <Route path='/updateRooms'
+            element={<Rooms/>} />
 
             <Route path='/about'
             element={<About />} />

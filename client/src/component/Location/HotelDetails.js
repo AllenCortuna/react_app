@@ -26,7 +26,7 @@ const HotelDetails = () => {
   <ListGroup className="list-group">
     <ListGroupItem className='quick'>{hotel.hotelName}</ListGroupItem>
     <ListGroupItem className='font' disabled>{hotel.location}</ListGroupItem>
-    <ListGroupItem className='font' disabled>{hotel.contact}</ListGroupItem>
+    <ListGroupItem className='font' disabled>{hotel.email}</ListGroupItem>
   </ListGroup>
   <Card.Body>
                 {rooms.filter(room => hotel._id === room?.creator).map((room)=>(
