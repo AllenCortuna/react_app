@@ -17,6 +17,7 @@ export const getUsers = async (req, res) => {
 }
 
 
+
 export const signin = async (req, res ) => {
     const { email, password } = req.body;
 
@@ -45,7 +46,7 @@ export const signup = async (req, res) => {
         if (oldUser)  return res.status(400).json({message: 'User already exist'});
 
         const hashedPassword = await bcrypt.hash(password, 12);
-        const result = await UserModal.create({email,password: hashedPassword, hotelName,location,image});
+        const result = await UserModal.create({email,password: hashedPassword, hotelName,location,contact,image});
 
         const token = jwt.sign({email: result.email,id : result._id },secret, {expiresIn: '1h'})
         res.status(201).json({result,token});

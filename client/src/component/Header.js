@@ -76,8 +76,9 @@ const Header = () => {
           Make a Room</Link>}
 
 
+    {user?.result && 
       <Link to='/updateRooms' className=''>
-        <img src={manage} alt="" className='imglogo'/>Update Rooms</Link>
+        <img src={manage} alt="" className='imglogo'/>Update Rooms</Link>}
         
       <Link to='/contact' className=''>
         <img src={mail} alt="" className='imglogo'/>

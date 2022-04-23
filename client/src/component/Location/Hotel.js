@@ -25,7 +25,7 @@ const Hotel  = ({user}) => {
       <Card.Img variant="top" src={user.image} className='img'/>
       <ListGroup className="list-group">
 
-        <ListGroupItem className='quick'>{user.hotelName}</ListGroupItem>
+       <ListGroupItem className='quick'>{user.hotelName}</ListGroupItem>
 
         <ListGroupItem className='font'><p className='inline quick '>room available: &nbsp;
             {!rooms.length ? <Spinner animation="border" role="status" size='sm'> </Spinner> : <p className='green quick inline'>{active}</p>}

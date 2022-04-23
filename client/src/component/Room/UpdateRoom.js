@@ -1,13 +1,31 @@
 
 
-
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react'
 import {Form,Button} from 'react-bootstrap'
 import {createRoom,updateRoom} from '../../actions/rooms'
-import FileBase from 'react-file-base64';
+//import FileBase from 'react-file-base64';
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
+  //file image upload
+    let fileObj = [];
+    let fileArray = [];
+
+  const uploadMultipleFiles = (e) => {
+      fileObj.push(e.target.files)
+      for (let i = 0; i < this.fileObj[0].length; i++) {
+        fileArray.push(URL.createObjectURL(this.fileObj[0][i]))
+        }
+        setRoomData({ ...roomData, image: fileArray })
+    }
+ 
+  //category toggle
+  const [formats, setFormats] = useState([]);
+  const handleFormat = (event, newFormats) => {
+    setFormats(newFormats);
+  };
 
   const [roomData, setRoomData] = useState({
     hotelName: '',
@@ -15,7 +33,9 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     price: '', 
     category:'',
     roomStatus:false,
-    image: ''
+    image: {
+
+    }
   });
   const user = JSON.parse(localStorage.getItem('profile'));
 
@@ -77,14 +97,23 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     onChange={(e) => 
             setRoomData({ ...roomData, price: e.target.value })} />    
 
+  <ToggleButtonGroup
+        value={formats}
+        onChange={handleFormat}
+        aria-label="text formatting"
+      >
+        <ToggleButton value="Aircon" aria-label="bold">
+        Aircon 
+        </ToggleButton>
+        <ToggleButton value="Single Bed" aria-label="italic">
+        Single Bed
+        </ToggleButton>
+        <ToggleButton value="Double Bed" aria-label="underlined">
+         Double Bed 
+        </ToggleButton>
+      </ToggleButtonGroup>
 
-    <Form.Control type="text" 
-    maxLength="10"
-    placeholder="category" 
-    value={roomData.category}
-    onChange={(e) => 
-            setRoomData({ ...roomData, category: e.target.value })} />    
-    
+
     <Form.Check
     type="checkbox"
     id="disabledFieldsetCheck"
@@ -92,9 +121,17 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     checked={roomData.roomStatus}
     onChange={toggleCheck}/>    
 
-    <div className='quick'>
-    <FileBase type="file" multiple={false} onDone={({ base64 }) => setRoomData({ ...roomData, image: base64 })} /><p> &nbsp;Room Image</p>  </div>
-
+            <form>
+                <div className="form-group multi-preview">
+                    {(fileArray || []).map(url => (
+                        <img src={url} alt="..." />
+                    ))}
+                </div>
+ 
+                <div className="form-group">
+                    <input type="file" className="form-control" onChange={uploadMultipleFiles} multiple />
+                </div>
+            </form >
 
   </Form.Group>
 
@@ -107,6 +144,5 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
         </div> 
 
 }
-
 
 export default UpdateRoom

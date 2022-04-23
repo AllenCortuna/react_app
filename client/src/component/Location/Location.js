@@ -3,6 +3,7 @@
 
 import waiting from '../img/Waiting.gif';
 import { getUsers} from '../../actions/auth';
+
 import React, {useEffect, } from 'react';
 import {useSelector, useDispatch } from 'react-redux';
 import { getRooms } from '../../actions/rooms';
@@ -36,9 +37,8 @@ const Location = () => {
       </div>}
 
       {users?.map((user)=>(
-        <Grid item xs={12} md={6} xl={4} 
-          style={{alignSelf:'center'}}>
-          <Hotel user={user} key={user._id}/>
+        <Grid item xs={12} md={6} xl={4} key={user._id} style={{alignSelf:'center'}}>
+          <Hotel user={user} />
         </Grid>
     )) }
     </Grid>
