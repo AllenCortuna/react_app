@@ -1,21 +1,16 @@
-import * as React from 'react';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
+
+import ImageGallery from 'react-image-gallery';
 
 export default function StandardImageList({image}) {
   return (
-    <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
-      {image.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+
+    <div>
+    {image.map((item)=>( 
+      <img src={item} alt=""  className='img' key={item}/>
+    ))}
+    </div>
+<ImageGallery items={image} />;
+
   );
 }
 

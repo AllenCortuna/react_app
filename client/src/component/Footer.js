@@ -46,7 +46,7 @@ const Footer = () => {
         <div> 
         <ul>
             <li><Link to='/about' onClick={topFunction}>  About</Link></li>
-            <li><Link to='/register' onClick={topFunction}>Register</Link></li>
+            <li><Link to='/privacy' onClick={topFunction}>Privacy Policy</Link></li>
             <li><Link to='/*' onClick={topFunction}>Report Issue</Link></li>
           </ul>
         </div>

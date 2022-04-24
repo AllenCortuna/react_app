@@ -1,31 +1,12 @@
 
 
-import ToggleButton from '@mui/material/ToggleButton';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useDispatch, useSelector } from 'react-redux';
 import React, { useState, useEffect } from 'react'
 import {Form,Button} from 'react-bootstrap'
 import {createRoom,updateRoom} from '../../actions/rooms'
-//import FileBase from 'react-file-base64';
+import FileBase from 'react-file-base64';
 
 const UpdateRoom = ({currentId, setCurrentId }) => {
-  //file image upload
-    let fileObj = [];
-    let fileArray = [];
-
-  const uploadMultipleFiles = (e) => {
-      fileObj.push(e.target.files)
-      for (let i = 0; i < this.fileObj[0].length; i++) {
-        fileArray.push(URL.createObjectURL(this.fileObj[0][i]))
-        }
-        setRoomData({ ...roomData, image: fileArray })
-    }
- 
-  //category toggle
-  const [formats, setFormats] = useState([]);
-  const handleFormat = (event, newFormats) => {
-    setFormats(newFormats);
-  };
 
   const [roomData, setRoomData] = useState({
     hotelName: '',
@@ -33,10 +14,20 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     price: '', 
     category:'',
     roomStatus:false,
-    image: {
-
-    }
+    image: [],
   });
+
+  const clear = () => {
+      setCurrentId(0);
+      setRoomData({   
+        name: '', 
+        price: '', 
+        category: '', 
+        roomStatus:false,
+        image: []
+      });
+  };
+
   const user = JSON.parse(localStorage.getItem('profile'));
 
   const room = useSelector((state) => (currentId ? state.rooms.find((name) => name._id === currentId) : null));
@@ -49,16 +40,6 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     // eslint-disable-next-line
   }, [room,currentId]);
 
-  const clear = () => {
-      setCurrentId(0);
-      setRoomData({   
-        name: '', 
-        price: '', 
-        category: '', 
-        roomStatus:false,
-        image: ''
-      });
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -74,8 +55,12 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
   const toggleCheck = () => {
     roomData.roomStatus ? setRoomData({...roomData, roomStatus: false}) : setRoomData({...roomData, roomStatus: true})}
 
-
-
+  const handleImages = (image) => {
+    const oldImages = roomData.image;
+    const newImage = oldImages.concat(image)
+    setRoomData({...roomData, image: newImage})
+    console.log(roomData.image.length );
+  }
   return <div className="borderline" id='updateRoom'>
         
   <Form>   
@@ -97,21 +82,12 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     onChange={(e) => 
             setRoomData({ ...roomData, price: e.target.value })} />    
 
-  <ToggleButtonGroup
-        value={formats}
-        onChange={handleFormat}
-        aria-label="text formatting"
-      >
-        <ToggleButton value="Aircon" aria-label="bold">
-        Aircon 
-        </ToggleButton>
-        <ToggleButton value="Single Bed" aria-label="italic">
-        Single Bed
-        </ToggleButton>
-        <ToggleButton value="Double Bed" aria-label="underlined">
-         Double Bed 
-        </ToggleButton>
-      </ToggleButtonGroup>
+  <Form.Control type="text" 
+  maxLength="20"
+  placeholder="category" 
+    value={roomData.category}
+    onChange={(e) => 
+            setRoomData({ ...roomData, category: e.target.value })} />    
 
 
     <Form.Check
@@ -121,26 +97,21 @@ const UpdateRoom = ({currentId, setCurrentId }) => {
     checked={roomData.roomStatus}
     onChange={toggleCheck}/>    
 
-            <form>
-                <div className="form-group multi-preview">
-                    {(fileArray || []).map(url => (
-                        <img src={url} alt="..." />
-                    ))}
-                </div>
- 
-                <div className="form-group">
-                    <input type="file" className="form-control" onChange={uploadMultipleFiles} multiple />
-                </div>
-            </form >
+    <div className='quick'>
+      <FileBase type="file" multiple={false} onDone={({ base64 }) => handleImages(base64)} /> 
+    </div>
+<p>total image: &nbsp; {roomData.image.length}</p>  
 
   </Form.Group>
 
-    <Button variant="primary" 
+  <Button variant="dark" 
+    style={{backgroundColor: '#41323b'}}
+    className='link' 
     type="submit" 
     onClick={handleSubmit}>
     Submit
     </Button>
-</Form>
+  </Form>
         </div> 
 
 }

@@ -1,7 +1,7 @@
 
 
-
-import LinkTo from './Link';
+import  topFunction  from './function/function';
+import { Link } from 'react-router-dom';
 const About = () =>{
 
       return <div className="container">
@@ -15,7 +15,7 @@ const About = () =>{
 <br/>
 
             </p>
-            <LinkTo path={'/'} label={'Back'}/>
+          <Link to='/' className='link' onClick={topFunction}>Back</Link>
         </div>
         </div>
 }
