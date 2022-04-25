@@ -7,7 +7,8 @@ export default function StandardImageList({image}) {
     infinite: true,
     speed: 500,
     slidesToShow: 1,
-    slidesToScroll: 1
+    slidesToScroll: 1,
+    dotClass: 'dotClass'
   };
 
   return (
@@ -15,7 +16,7 @@ export default function StandardImageList({image}) {
     <Slider {...settings}>
       {image.map((item)=>( 
       <div>
-        <img src={item} alt=""   key={item} style={{width:'100%' ,height:'auto', objectFit:'cover' }}/>
+        <img src={item} alt=""   key={item} style={{width:'100%' ,height:'auto', objectFit:'cover'}} />
       </div>
       ))}
     </Slider>

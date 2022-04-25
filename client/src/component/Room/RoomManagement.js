@@ -15,12 +15,14 @@ const RoomManagement = () => {
         dispatch(getRooms());
     },[currentId,dispatch]);
 */}
-return  <div className='container' >
-            <UpdateRoom currentId={currentId} 
-                        setCurrentId={setCurrentId}/>
+  return  <div className='container' >
+
+     <UpdateRoom currentId={currentId} 
+        setCurrentId={setCurrentId}/>
                 
-        </div>
+  </div>
 
 }
+
 
 export default RoomManagement

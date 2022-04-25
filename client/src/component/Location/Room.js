@@ -6,6 +6,13 @@ import moment from 'moment';
 
 const Room = ({room}) =>{
   return <div className='borderline' style={{backgroundColor:''}}>
+
+
+    <div style={{backgroundColor:'#41323b', borderRadius:'5px 5px 0 0'}}>
+
+      <RoomDetails image={room.image}/> 
+    </div>
+
     <table>
         <thead>
         <tr>
@@ -34,10 +41,6 @@ const Room = ({room}) =>{
     </tbody>
     </table>
 
-    <div style={{backgroundColor:'#41323b'}}>
-
-      <RoomDetails image={room.image}/> 
-    </div>
     </div>
   
 }

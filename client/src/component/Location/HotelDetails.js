@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams} from 'react-router-dom';
 import { getRooms } from '../../actions/rooms';
 import {Card,ListGroup,ListGroupItem}from 'react-bootstrap';
+import { Grid } from '@mui/material';
 import Room from './Room';
 
 const HotelDetails = () => {
@@ -21,7 +22,7 @@ const HotelDetails = () => {
     },[dispatch,]); 
     
     return <div className="container">
-  <Card stye={{width: '100%'}} >
+  <Card style={{width: '100%'}} >
     <Card.Img variant="top" src={hotel.image} className='img'/>
   <ListGroup className="list-group">
     <ListGroupItem className='quick'>{hotel.hotelName}</ListGroupItem>
@@ -30,11 +31,22 @@ const HotelDetails = () => {
     <ListGroupItem className='font' disabled> {hotel.contact}</ListGroupItem>
   </ListGroup>
   <Card.Body>
-                {rooms.filter(room => hotel._id === room?.creator).map((room)=>(
-                <div key ={room._id}>
-                    <Room room={room}/>
-                </div >
-            ))}
+
+
+  <Grid container 
+    style={{padding:'3%'}}  
+    spacing={1}
+  >
+        {rooms.filter(room => hotel._id === room?.creator).map((room)=>(
+
+        <Grid item xs={12} md={6} xl={4} key={room._id} style={{alignSelf:'center'}}>
+        <div>
+            <Room room={room}/>
+        </div >
+        </Grid>
+
+        ))}
+    </Grid>
   </Card.Body>
 </Card>
 
