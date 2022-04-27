@@ -64,16 +64,13 @@ const UpdateRoom = ({ currentId, setCurrentId }) => {
       : setRoomData({ ...roomData, roomStatus: true });
   };
 
-  const toggleCategory = () => {
-    roomData.roomStatus
-      ? setRoomData({ ...roomData, category: false })
-      : setRoomData({ ...roomData, category: true });
-  };
-
   const handleImages = (image) => {
     const oldImages = roomData.image;
-    const newImage = oldImages.concat(image);
-    setRoomData({ ...roomData, image: newImage });
+    //accept only 5 maximum image
+    if (roomData.image.length <= 4) {
+      const newImage = oldImages.concat(image);
+      setRoomData({ ...roomData, image: newImage });
+    }
   };
 
   const handleCategory = (e) => {
@@ -81,7 +78,7 @@ const UpdateRoom = ({ currentId, setCurrentId }) => {
     if (category.includes(e.target.value)) {
       let index = category.indexOf(e.target.value);
       category.splice(index, 1);
-      setRoomData({ ...roomData, category: category});
+      setRoomData({ ...roomData, category: category });
     } else {
       category.push(e.target.value);
       setRoomData({ ...roomData, category: category });
@@ -112,6 +109,8 @@ const UpdateRoom = ({ currentId, setCurrentId }) => {
             }
           />
 
+          {//show warning if selected category  > 3 = 0
+roomData.category.length > 2 || roomData.category.length === 0 ? (<p className="red"> *select atleast one or two category </p>) : null}
           <FormGroup>
             <FormControlLabel
               control={<Checkbox value="Aircon" onClick={handleCategory} />}
@@ -130,7 +129,6 @@ const UpdateRoom = ({ currentId, setCurrentId }) => {
               label="Queen Size"
             />
           </FormGroup>
-
           <Form.Check
             className="quick"
             type="checkbox"
@@ -146,10 +144,11 @@ const UpdateRoom = ({ currentId, setCurrentId }) => {
               multiple={false}
               onDone={({ base64 }) => handleImages(base64)}
             />
-          </div>
-          <p className="quick">
-            total image(s): &nbsp; {roomData.image.length}
-          </p>
+            </div>
+
+            {//total image
+              roomData.image.length ===0 || roomData.image.length >=4 ?(<p className="red"> *upload atleast one photo(4 maximum) </p>) : null}
+
         </Form.Group>
 
         <Button
