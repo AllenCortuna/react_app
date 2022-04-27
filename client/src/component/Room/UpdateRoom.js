@@ -138,6 +138,9 @@ roomData.category.length > 2 || roomData.category.length === 0 ? (<p className="
             onChange={toggleCheck}
           />
 
+            {//total image
+              roomData.image.length ===0 || roomData.image.length >=4 ?(<p className="red"> *upload atleast one photo(4 maximum) </p>) : null}
+
           <div className="quick">
             <FileBase
               type="file"
@@ -145,9 +148,6 @@ roomData.category.length > 2 || roomData.category.length === 0 ? (<p className="
               onDone={({ base64 }) => handleImages(base64)}
             />
             </div>
-
-            {//total image
-              roomData.image.length ===0 || roomData.image.length >=4 ?(<p className="red"> *upload atleast one photo(4 maximum) </p>) : null}
 
         </Form.Group>
 

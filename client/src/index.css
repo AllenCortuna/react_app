@@ -217,17 +217,17 @@ tr:nth-child(odd) {
     align-items: center;
     align-content:center;
 }
-@media only screen and (min-width: 768px){
-    .container{
-        padding: 1.5%;
-    }
-    .card{
-        width:30rem;
-    }
-    .img{
-        height: 20rem;
-    }
-}
+/* @media only screen and (min-width: 768px){ */
+/*     .container{ */
+/*         padding: 1.5%; */
+/*     } */
+/*     .card{ */
+/*         width:30rem; */
+/*     } */
+/*     .img{ */
+/*         height: 20rem; */
+/*     } */
+/* } */
 .fullscreen{
   background:#181818;
   position:absolute;
