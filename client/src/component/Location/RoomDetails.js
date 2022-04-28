@@ -16,7 +16,7 @@ export default function StandardImageList({image}) {
     <Slider {...settings}>
       {image.map((item)=>( 
       <div>
-        <img src={item} alt=""   key={item} style={{width:'100%' ,height:'auto', objectFit:'cover'}} />
+        <img src={item} alt="" key={item} style={{width:'100%' ,height:'auto', objectFit:'cover'}} />
       </div>
       ))}
     </Slider>

@@ -33,7 +33,6 @@ const Hotel = ({ user }) => {
               room available: &nbsp;
               {!rooms.length ? (
                 <Spinner animation="border" role="status" size="sm">
-                  {" "}
                 </Spinner>
               ) : (
                 <p className="green quick inline">{active}</p>

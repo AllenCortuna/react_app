@@ -5,14 +5,15 @@ import { useEffect } from "react";
 import { getOwnRooms } from '../../actions/rooms';
 
 const Rooms = () => {
-  const rooms = useSelector((state) => state.rooms);
   const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
+  const rooms = useSelector((state) => state.rooms);
+  const own = rooms.filter((room) =>room.creator === user?.result?._id).length
     useEffect(() => {
         dispatch(getOwnRooms(user?.result._id));
-    },[dispatch])
+    },[dispatch,own])
 
-console.log(rooms.length);
+console.log(own);
 
   return !rooms.length ? (
     <div className="container" style={{height:'400px'}}>
