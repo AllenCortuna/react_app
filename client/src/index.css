@@ -31,8 +31,8 @@ background-size: cover;
   flex-wrap: wrap;
   padding: 1em;
   width: 100%;
-  justify-content:center;
-  align-content:center;
+  justify-content:space-around;
+  align-content:space-around;
 }
 .header {
   box-sizing: border-box;
@@ -183,7 +183,7 @@ tr:nth-child(odd) {
 /* HOTEL GRID DISPLAY */
 .img {
   width: 100%;
-  height: 10rem;
+  height: 200px;
   object-fit:cover;
   box-shadow: 0 1px 4px 0px black;
   border-radius: 0 0 5px 5px;
@@ -193,7 +193,7 @@ tr:nth-child(odd) {
   height: 8.8rem;
   object-fit:cover;
   box-shadow: 0 1px 2.5px 0px black;
-  border-radius: 0 5px;
+  border-radius: 5px 5px;
 }
 
 .imgheader {
@@ -217,17 +217,14 @@ tr:nth-child(odd) {
     align-items: center;
     align-content:center;
 }
-/* @media only screen and (min-width: 768px){ */
-/*     .container{ */
-/*         padding: 1.5%; */
-/*     } */
-/*     .card{ */
-/*         width:30rem; */
-/*     } */
-/*     .img{ */
-/*         height: 20rem; */
-/*     } */
-/* } */
+@media only screen and (min-width: 768px){
+    .container{
+        padding: 1.5%;
+    }
+    .card{
+        width:20rem;
+    }
+}
 .fullscreen{
   background:#181818;
   position:absolute;

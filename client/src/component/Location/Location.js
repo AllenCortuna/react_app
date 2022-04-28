@@ -21,7 +21,7 @@ const Location = () => {
   const users = useSelector((state) => state.users);
 
   return (
-    <Grid container style={{ padding: "3%" }} spacing={1}>
+    <div className="container">
       {users?.length === 0 && (
         <div className="fullscreen">
           <img src={waiting} alt="" style={{ width: "100%" }} />
@@ -29,18 +29,9 @@ const Location = () => {
       )}
 
       {users?.map((user) => (
-        <Grid
-          item
-          xs={12}
-          md={6}
-          xl={4}
-          key={user._id}
-          style={{ alignSelf: "center" }}
-        >
-          <Hotel user={user} />
-        </Grid>
+          <Hotel user={user} key={user._id} />
       ))}
-    </Grid>
+    </div>
   );
 };
 export default Location;

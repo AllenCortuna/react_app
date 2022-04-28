@@ -1,26 +1,22 @@
-import container from "../img/container.gif";
+import container from "../img/Searching.gif";
 import Room from "./Room";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-//import { getRooms } from '../../actions/rooms';
+import { getOwnRooms } from '../../actions/rooms';
 
-const Rooms = ({ currentId, setCurrentId }) => {
+const Rooms = () => {
   const rooms = useSelector((state) => state.rooms);
-
-  const dispatch = useDispatch();
-  /* 
-    useEffect(() => {
-        dispatch(getRooms());
-    },[currentId,dispatch,rooms.length])
- */
   const user = JSON.parse(localStorage.getItem("profile"));
+  const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getOwnRooms(user?.result._id));
+    },[dispatch])
 
-  if (rooms.filter((room) => user?.result?._id === room?.creator) === 0)
-    return <h1>No rooms to display</h1>;
+console.log(rooms.length);
 
   return !rooms.length ? (
-    <div className="borderline">
-      <img src={container} alt="" style={{ width: "100%" }} />
+    <div className="container" style={{height:'400px'}}>
+      <img src={container} alt="" style={{ width: "15%" ,borderRadius:'23px'}} />
     </div>
   ) : (
     <div className="container">
@@ -28,7 +24,7 @@ const Rooms = ({ currentId, setCurrentId }) => {
         .filter((room) => user?.result?._id === room?.creator)
         .map((room) => (
           <div key={room._id}>
-            <Room room={room} setCurrentId={setCurrentId} />
+            <Room room={room} />
           </div>
         ))}
     </div>
