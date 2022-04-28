@@ -32,8 +32,9 @@ const Footer = () => {
         <ul>
             <li><Link to='/terms' onClick={topFunction}> Term &amp; Conditions</Link></li>
 
-            <li><Link to='/contact' onClick={topFunction}> Contact Us</Link></li>
-
+          <li>
+            <a href="mailto:allencortuna_caststudent@omsc.ph.education">Contact Us </a></li>
+   
             <li>{user?.result ? (
             <Link to='/register' onClick={logout}>Logout</Link>
     ) : (
@@ -47,7 +48,8 @@ const Footer = () => {
         <ul>
             <li><Link to='/about' onClick={topFunction}>  About</Link></li>
             <li><Link to='/privacy' onClick={topFunction}>Privacy Policy</Link></li>
-            <li><Link to='/*' onClick={topFunction}>Report Issue</Link></li>
+            <li>
+              <a href="mailto:allencortuna_caststudent@omsc.ph.education">Report Issue </a></li>
           </ul>
         </div>
 

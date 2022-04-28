@@ -84,10 +84,10 @@ const Header = () => {
               </Link>
             )}
 
-            <Link to="/contact" className="">
+            <a href="mailto:allencortuna_caststudent@omsc.ph.education">
               <img src={mail} alt="" className="imglogo" />
               Contact us
-            </Link>
+            </a>
 
             <Link to="/terms" className="">
               <img src={terms} alt="" className="imglogo" />

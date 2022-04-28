@@ -20,9 +20,11 @@ const Hotel = ({ user }) => {
   const active = rooms
     ?.filter((room) => room.creator === user._id)
     .filter((room) => room.roomStatus === true).length;
+  
+  const show = rooms.filter((room) => room.creator === user._id).length 
 
-  return (
-    <div key={user._id} onClick={openHotel} className="inline">
+if(show !== 0) {
+  return (<div key={user._id} onClick={openHotel} className="inline">
       <Card className="card" style={{ width: "320px" }}>
         <Card.Img variant="top" src={user.image} className="img" />
         <ListGroup className="list-group">
@@ -45,8 +47,10 @@ const Hotel = ({ user }) => {
           </ListGroupItem>
         </ListGroup>
       </Card>
-    </div>
-  );
+      </div>)}
+  return null
+
+
 };
 
 export default Hotel;
