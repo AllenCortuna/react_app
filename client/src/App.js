@@ -1,4 +1,3 @@
-import { ThemeProvider, createTheme } from "@material-ui/core/styles";
 import "./index.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Header from "./component/Header";
@@ -11,7 +10,9 @@ import SignUp from "./component/Auth/Auth";
 import HotelDetails from "./component/Location/HotelDetails";
 import Rooms from "./component/Room/Rooms";
 import Terms from "./component/Terms";
-
+import { createTheme } from "@mui/material/styles";
+import { ThemeProvider } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
 const theme = createTheme({
   typography: {
     fontFamily: "Red Hat Display",
@@ -24,6 +25,7 @@ const theme = createTheme({
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline/>
       <Router>
         <div>
           <Header />

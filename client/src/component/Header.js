@@ -73,14 +73,14 @@ const Header = () => {
             {user?.result && (
               <Link to="/roomManagement" className="">
                 <img src={dorm} alt="" className="imglogo" />
-                Make a Room
+               Upload Room
               </Link>
             )}
 
             {user?.result && (
               <Link to="/updateRooms" className="">
                 <img src={manage} alt="" className="imglogo" />
-                Update Rooms
+                Room Management
               </Link>
             )}
 

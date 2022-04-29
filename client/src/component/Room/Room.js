@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { deleteRoom } from "../../actions/rooms";
 import more from "../img/more.png";
 import cancel from "../img/delete.png";
-import {  updateRoom } from "../../actions/rooms";
+import { updateRoom } from "../../actions/rooms";
 import React, { useState } from "react";
 //<a href="https://www.flaticon.com/free-icons/delete" title="delete icons">Delete icons created by Alfredo Hernandez - Flaticon</a>
 //<a href="https://www.flaticon.com/free-icons/more" title="more icons">More icons created by Freepik - Flaticon</a>
@@ -15,11 +15,12 @@ const Room = ({ room }) => {
   const dispatch = useDispatch();
   function handleUpdate() {
     const id = room._id;
-    const status = !room.roomStatus
+    const status = !room.roomStatus;
     console.log(status);
     dispatch(
       updateRoom(id, {
-        ...room, roomStatus: status
+        ...room,
+        roomStatus: status,
       })
     );
   }
@@ -69,7 +70,7 @@ const Room = ({ room }) => {
         {(user?.result?.googleId === room?.creator ||
           user?.result?._id === room?.creator) && (
           <Button variant="none" onClick={handleUpdate}>
-            <img src={more} alt="" style={{ width: "35%" }} />
+            <p className="quick font green center">UPDATE</p>
           </Button>
         )}
 
