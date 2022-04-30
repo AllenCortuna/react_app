@@ -33,13 +33,13 @@ if(show !== 0) {
           <ListGroupItem className="font">
             <p className="inline quick ">
               room available: &nbsp;
+            </p>
               {!rooms.length ? (
                 <Spinner animation="border" role="status" size="sm">
                 </Spinner>
               ) : (
                 <p className="green quick inline">{active}</p>
               )}
-            </p>
           </ListGroupItem>
 
           <ListGroupItem className="font" disabled>

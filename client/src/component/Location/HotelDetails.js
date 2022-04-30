@@ -40,7 +40,7 @@ const HotelDetails = () => {
         {rooms.filter(room => hotel._id === room?.creator).map((room)=>(
 
         <Grid item xs={12} md={6} xl={4} key={room._id} style={{alignSelf:'center'}}>
-            <Room room={room}/>
+            <Room room={room} key={room._id}/>
         </Grid>
 
         ))}
