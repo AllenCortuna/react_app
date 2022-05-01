@@ -10,6 +10,7 @@ import SignUp from "./component/Auth/Auth";
 import HotelDetails from "./component/Location/HotelDetails";
 import Rooms from "./component/Room/Rooms";
 import Terms from "./component/Terms";
+import Privacy from './component/Privacy';
 import { createTheme } from "@mui/material/styles";
 import { ThemeProvider } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
@@ -44,7 +45,10 @@ const App = () => {
 
             <Route path="/hotels/:id" element={<HotelDetails />} />
 
+            <Route path="/privacy" element={<Privacy/>} />
+
             <Route path="/*" element={<NotFound />} />
+
           </Routes>
           <Footer />
         </div>
