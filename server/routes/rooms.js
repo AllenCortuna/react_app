@@ -6,7 +6,7 @@ import auth from '../middleware/auth.js'
 
 
 router.get('/', getRooms);
-router.get('/ownRooms', getOwnRooms);
+router.get('/',auth, getOwnRooms);
 router.post('/',auth, createRoom);
 router.get('/:id',auth, getRoom);
 router.patch('/:id',auth, updateRoom);
